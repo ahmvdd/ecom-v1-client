@@ -1,7 +1,7 @@
 // =============================================
 // CONFIGURATION — modifiez votre numéro ici
 // =============================================
-export const WHATSAPP_NUMBER = '33600000000' // format international, sans + ni espaces
+export const WHATSAPP_NUMBER = '33782645675' // format international, sans + ni espaces
 
 // =============================================
 // IMPORTS IMAGES LOCALES

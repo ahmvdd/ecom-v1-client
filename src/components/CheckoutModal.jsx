@@ -1,4 +1,5 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 import { useModal } from '../context/ModalContext'
 import { WHATSAPP_NUMBER } from '../data/products'
 
@@ -11,10 +12,11 @@ export default function CheckoutModal() {
     selectedColor,
   } = useModal()
 
-  const formRef = useRef(null)
-  const isOpen  = checkoutModalOpen && currentProduct !== null
+  const formRef    = useRef(null)
+  const [sending, setSending] = useState(false)
+  const isOpen     = checkoutModalOpen && currentProduct !== null
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     const data = new FormData(formRef.current)
 
@@ -28,6 +30,32 @@ export default function CheckoutModal() {
 
     const variant = [selectedModel, selectedColor].filter(Boolean).join(' · ')
 
+    // ---- Envoi email via EmailJS ----
+    setSending(true)
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          produit:      currentProduct.name,
+          prix:         currentProduct.price,
+          variante:     variant || '—',
+          client_nom:   `${prenom} ${nom}`,
+          telephone,
+          adresse,
+          code_postal:  codePostal,
+          ville,
+          instructions: instructions || '—',
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+    } catch (err) {
+      console.error('EmailJS error:', err)
+    } finally {
+      setSending(false)
+    }
+
+    // ---- Ouverture WhatsApp (inchangé) ----
     const lines = [
       '🛍️ *Nouvelle commande — Electra*',
       '',
@@ -200,10 +228,11 @@ export default function CheckoutModal() {
 
                     <button
                       type="submit"
-                      className="w-full h-14 flex items-center justify-center gap-2.5 rounded-2xl bg-emerald-500 text-white text-sm font-semibold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20 active:scale-[0.98]"
+                      disabled={sending}
+                      className="w-full h-14 flex items-center justify-center gap-2.5 rounded-2xl bg-emerald-500 text-white text-sm font-semibold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       <iconify-icon icon="mdi:whatsapp" class="text-xl" />
-                      Envoyer la commande sur WhatsApp
+                      {sending ? 'Envoi en cours…' : 'Envoyer la commande sur WhatsApp'}
                     </button>
 
                     <p className="text-center text-xs text-zinc-400 font-light">
