@@ -35,6 +35,7 @@ export function ModalProvider({ children }) {
 
   function closeProductModal() {
     setProductModalOpen(false)
+    document.body.style.overflow = ''
   }
 
   function openCheckoutModal(product) {
@@ -47,6 +48,7 @@ export function ModalProvider({ children }) {
 
   function closeCheckoutModal() {
     setCheckoutModalOpen(false)
+    document.body.style.overflow = ''
   }
 
   return (
