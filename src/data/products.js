@@ -4,6 +4,16 @@
 export const WHATSAPP_NUMBER = '33600000000' // format international, sans + ni espaces
 
 // =============================================
+// IMPORTS IMAGES LOCALES
+// =============================================
+import imgMagSafeBattery from '../img/593daccd404760fd17c9112bdc071882.jpg'
+import imgAppleWatch     from '../img/6248e857e64a6f76378e89ac78a554c4.jpg'
+import imgCable          from '../img/c34ecbb6b534005c42c06a470b66132a.jpg'
+import imgAirPodsMax     from '../img/c69c25bbffd2eebc5dc8fc19df14f004.jpg'
+import imgAirPodsPro     from '../img/ca26fb54a237e1ec5172407638f44955.jpg'
+import imgAppleLogo      from '../img/dbfe75990174020a7ebf8799999212d8.jpg'
+
+// =============================================
 // CATALOGUE PRODUITS
 // =============================================
 export const products = [
@@ -17,8 +27,7 @@ export const products = [
     categoryLabel: 'Pour iPhone 15',
     description:
       "Confectionné en cuir pleine fleur de première qualité. Protection optimale avec une patine élégante qui se bonifie avec le temps. Compatible recharge sans fil.",
-    image:
-      'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?q=80&w=2127&auto=format&fit=crop',
     models: ['15 Pro', '15 Pro Max', '15', '15 Plus'],
     colors: [
       { name: 'Noir Minuit',    value: '#1C1C1E' },
@@ -29,20 +38,20 @@ export const products = [
   {
     id: 2,
     isNew: false,
-    name: 'Casque ANC Studio',
-    price: '349 €',
-    priceNum: 349,
+    name: 'AirPods Max',
+    price: '549 €',
+    priceNum: 549,
     category: 'Audio',
     categoryLabel: 'Audio Haute Fidélité',
     description:
-      "Réduction de bruit active de dernière génération. Drivers 40mm pour une scène sonore large et détaillée. Autonomie 30h + étui de charge magnétique inclus.",
-    image:
-      'https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=2065&auto=format&fit=crop',
+      "Réduction de bruit active de classe mondiale. Son spatial avec suivi dynamique de la tête. Arceau en acier inoxydable, coussinets en mesh respirant. Autonomie 20h.",
+    image: imgAirPodsMax,
     models: [],
     colors: [
-      { name: 'Noir',      value: '#1C1C1E' },
-      { name: 'Blanc',     value: '#F0F0F0', border: true },
-      { name: 'Bleu Nuit', value: '#1E3A5F' },
+      { name: 'Vert Sauge', value: '#7A9E7E' },
+      { name: 'Bleu Ciel',  value: '#7EC8E3' },
+      { name: 'Blanc',      value: '#F0F0F0', border: true },
+      { name: 'Noir',       value: '#1C1C1E' },
     ],
   },
   {
@@ -52,11 +61,10 @@ export const products = [
     price: '89 €',
     priceNum: 89,
     category: 'Accessoires',
-    categoryLabel: 'Accessoire',
+    categoryLabel: 'Accessoire Apple',
     description:
-      "Station de charge sans fil pour iPhone, Apple Watch et AirPods simultanément. Charge rapide 15W MagSafe. Socle en aluminium et verre trempé Gorilla Glass.",
-    image:
-      'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?q=80&w=2070&auto=format&fit=crop',
+      "Station de charge sans fil pour iPhone, Apple Watch et AirPods simultanément. Charge rapide 15W MagSafe. Certifié Apple. Socle en aluminium et verre trempé.",
+    image: imgAppleLogo,
     models: [],
     colors: [
       { name: 'Aluminium',    value: '#C8C8C8', border: true },
@@ -65,26 +73,23 @@ export const products = [
   },
   {
     id: 4,
-    isNew: false,
-    name: 'Écouteurs True Wireless',
-    price: '129 €',
-    priceNum: 129,
+    isNew: true,
+    name: 'AirPods Pro 2',
+    price: '279 €',
+    priceNum: 279,
     category: 'Audio',
-    categoryLabel: 'Audio Premium',
+    categoryLabel: 'Écouteurs Premium',
     description:
-      "Son spatial avec suivi dynamique de la tête. Réduction de bruit adaptative. Résistance IPX4. Jusqu'à 6h d'écoute + 24h avec le boîtier de charge.",
-    image:
-      'https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?q=80&w=2070&auto=format&fit=crop',
+      "Réduction de bruit adaptative de 2e génération. Son spatial personnalisé. Résistance à l'eau IPX4. Jusqu'à 6h d'écoute + 30h avec le boîtier MagSafe.",
+    image: imgAirPodsPro,
     models: [],
     colors: [
-      { name: 'Blanc', value: '#F0F0F0', border: true },
-      { name: 'Noir',  value: '#1C1C1E' },
-      { name: 'Mauve', value: '#9B8EC4' },
+      { name: 'Blanc', value: '#F5F5F5', border: true },
     ],
   },
   {
     id: 5,
-    isNew: true,
+    isNew: false,
     name: 'Protection Écran Verre Trempé',
     price: '29 €',
     priceNum: 29,
@@ -92,63 +97,58 @@ export const products = [
     categoryLabel: 'Pour iPhone 15',
     description:
       "Verre trempé 9H anti-rayures avec kit d'installation garanti sans bulle. Ultra-fin 0,2mm. Compatible Face ID et recharge sans fil. Lot de 2 inclus.",
-    image:
-      'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?q=80&w=2124&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?q=80&w=2124&auto=format&fit=crop',
     models: ['15 Pro', '15 Pro Max', '15', '15 Plus'],
     colors: [],
   },
   {
     id: 6,
     isNew: false,
-    name: 'Support Voiture MagSafe',
-    price: '45 €',
-    priceNum: 45,
+    name: 'Câble USB-C vers Lightning',
+    price: '25 €',
+    priceNum: 25,
     category: 'Accessoires',
-    categoryLabel: 'Accessoire Voiture',
+    categoryLabel: 'Câble de charge',
     description:
-      "Fixation magnétique MagSafe pour grille d'aération. Charge sans fil 15W intégrée. Rotation 360°. Compatible tous iPhone 12 et supérieur.",
-    image:
-      'https://images.unsplash.com/photo-1617704548623-340376564e68?q=80&w=2070&auto=format&fit=crop',
+      "Câble tressé certifié MFi (Made for iPhone). Charge rapide jusqu'à 20W. Compatible iPhone, iPad et AirPods. Longueur 1,5m. Résistant aux pliures.",
+    image: imgCable,
     models: [],
     colors: [
-      { name: 'Noir',   value: '#1C1C1E' },
-      { name: 'Argent', value: '#C0C0C0', border: true },
+      { name: 'Blanc', value: '#F5F5F5', border: true },
     ],
   },
   {
     id: 7,
     isNew: true,
-    name: 'Enceinte Bluetooth Compacte',
-    price: '199 €',
-    priceNum: 199,
-    category: 'Audio',
-    categoryLabel: 'Enceinte Portable',
+    name: 'Apple Watch Série 10',
+    price: '449 €',
+    priceNum: 449,
+    category: 'Accessoires',
+    categoryLabel: 'Montre connectée',
     description:
-      "Son 360° haute qualité avec basses profondes. Autonomie 20h. Résistante à l'eau IPX7. Connexion simultanée de 2 appareils. Idéale intérieur et extérieur.",
-    image:
-      'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?q=80&w=2069&auto=format&fit=crop',
-    models: [],
+      "Le plus grand écran OLED Always-On de l'histoire de l'Apple Watch. Suivi santé avancé (ECG, O2, température). Ultra-fin, ultra-léger. Bracelet milanais inclus.",
+    image: imgAppleWatch,
+    models: ['40mm', '44mm'],
     colors: [
-      { name: 'Noir',       value: '#1C1C1E' },
-      { name: 'Gris Pierre', value: '#9C9C9C', border: true },
-      { name: 'Vert Sauge', value: '#7A9E7E' },
+      { name: 'Argent', value: '#C0C0C0', border: true },
+      { name: 'Or',     value: '#D4AF37' },
+      { name: 'Noir',   value: '#1C1C1E' },
     ],
   },
   {
     id: 8,
     isNew: false,
-    name: 'Batterie Externe MagSafe',
-    price: '79 €',
-    priceNum: 79,
+    name: 'Batterie MagSafe',
+    price: '109 €',
+    priceNum: 109,
     category: 'Accessoires',
     categoryLabel: 'Batterie Portable',
     description:
-      "Batterie externe 10 000mAh avec charge MagSafe 7,5W et USB-C 20W. Design ultra-plat en aluminium brossé. Charge votre iPhone en voyage sans fil.",
-    image:
-      'https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=2070&auto=format&fit=crop',
+      "Batterie magnétique officielle Apple. Se fixe directement sur votre iPhone 12 et supérieur sans câble. Charge 7,5W sans fil. Design ultra-compact en silicone doux.",
+    image: imgMagSafeBattery,
     models: [],
     colors: [
-      { name: 'Blanc',       value: '#F0F0F0', border: true },
+      { name: 'Blanc',       value: '#F5F5F5', border: true },
       { name: 'Noir Minuit', value: '#1C1C1E' },
     ],
   },

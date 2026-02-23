@@ -1,639 +1,197 @@
-<html lang="fr"><head>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalogue — E L E C T R A</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Glassmorphism refined */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
 
-        .product-card { transition: opacity 0.3s ease, transform 0.3s ease; }
-        .product-card.hidden-card { opacity: 0; transform: scale(0.97); pointer-events: none; position: absolute; visibility: hidden; }
+        /* Soft Shadows */
+        .shadow-soft {
+            box-shadow: 0 4px 20px -1px rgba(0, 0, 0, 0.03), 0 2px 8px -1px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Product Card Animation */
+        .product-card-hover {
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .product-card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);
+        }
+
+        /* Button Pulse Effect for WhatsApp */
+        @keyframes pulse-emerald {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        .animate-pulse-btn {
+            animation: pulse-emerald 2s infinite;
+        }
     </style>
 </head>
-<body class="font-['Inter'] bg-[#FAFAFA] text-zinc-900 antialiased selection:bg-zinc-200">
+<body class="bg-[#FBFBFD] text-zinc-900 antialiased selection:bg-zinc-900 selection:text-white">
 
-    <!-- ========================================== -->
-    <!-- HEADER                                     -->
-    <!-- ========================================== -->
     <header class="fixed top-0 inset-x-0 z-40">
-        <div class="bg-zinc-900 text-white text-[11px] py-2 text-center font-light tracking-wide">
-            Livraison express 24h &nbsp;·&nbsp; Garantie 2 ans &nbsp;·&nbsp; Retours 30 jours &nbsp;·&nbsp;
-            <a href="https://wa.me/33600000000" target="_blank" class="underline underline-offset-2 hover:text-emerald-400 transition-colors">SAV &amp; conseils sur WhatsApp</a>
+        <div class="bg-zinc-950 text-white text-[10px] py-2 text-center font-medium tracking-[0.15em] uppercase">
+            Livraison offerte dès 100€ &nbsp;•&nbsp; Expédition sous 24h
         </div>
-        <div class="bg-[#FAFAFA]/90 backdrop-blur-xl border-b border-zinc-200/60">
-            <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-                <div class="flex items-center gap-8">
-                    <a href="index.html" class="text-sm font-semibold tracking-[0.2em] uppercase">Electra</a>
-                    <nav class="hidden md:flex gap-6">
-                        <a href="produits.html?cat=nouveautes" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Nouveautés</a>
-                        <a href="produits.html?cat=accessoires" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Accessoires</a>
-                        <a href="produits.html?cat=audio" class="text-sm text-zinc-900 font-medium transition-colors">Audio</a>
-                        <a href="produits.html?cat=electromenager" class="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Électroménager</a>
+        <div class="glass border-b border-zinc-200/50">
+            <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+                <div class="flex items-center gap-12">
+                    <a href="index.html" class="text-lg font-bold tracking-tighter hover:opacity-70 transition-opacity">ELECTRA<span class="text-emerald-500">.</span></a>
+                    <nav class="hidden lg:flex gap-8">
+                        <a href="#" onclick="setCategory('Tous')" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Explorer</a>
+                        <a href="#" onclick="setCategory('Audio')" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Audio</a>
+                        <a href="#" onclick="setCategory('Accessoires')" class="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors">Accessoires</a>
                     </nav>
                 </div>
-                <div class="flex items-center gap-3">
-                    <button onclick="toggleSearch()" class="w-9 h-9 flex items-center justify-center rounded-full text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100 transition-all">
-                        <iconify-icon icon="solar:magnifer-linear" class="text-lg"></iconify-icon>
+                <div class="flex items-center gap-2">
+                    <button onclick="toggleSearch()" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-zinc-100 transition-colors">
+                        <iconify-icon icon="solar:magnifer-linear" class="text-xl"></iconify-icon>
                     </button>
-                    <a href="https://wa.me/33600000000" target="_blank"
-                       class="flex items-center gap-2 text-xs font-medium text-white bg-emerald-500 hover:bg-emerald-600 transition-colors px-4 py-2 rounded-full">
-                        <iconify-icon icon="mdi:whatsapp" class="text-base"></iconify-icon>
-                        <span class="hidden sm:inline">WhatsApp</span>
+                    <a href="https://wa.me/33600000000" class="flex items-center gap-2 bg-zinc-900 text-white px-5 py-2.5 rounded-full text-xs font-semibold hover:bg-zinc-800 transition-all">
+                        Besoin d'aide ?
                     </a>
                 </div>
             </div>
         </div>
-        <!-- Barre de recherche (cachée par défaut) -->
-        <div id="search-bar" class="hidden bg-white border-b border-zinc-200 px-6 py-3">
-            <div class="max-w-7xl mx-auto relative">
-                <iconify-icon icon="solar:magnifer-linear" class="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 text-lg pointer-events-none"></iconify-icon>
-                <input id="search-input" type="text" placeholder="Rechercher un produit…"
-                       oninput="filterProducts()"
-                       class="w-full pl-11 pr-4 py-2.5 rounded-xl border border-zinc-200 text-sm font-light text-zinc-900 outline-none focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10 placeholder:text-zinc-400 bg-zinc-50">
-            </div>
-        </div>
     </header>
 
-    <!-- Décalage pour le header fixe : announcement (32px) + nav (56px) = 88px -->
-    <div class="h-[88px]"></div>
+    <div class="h-28"></div>
 
-    <!-- ========================================== -->
-    <!-- EN-TÊTE PAGE                               -->
-    <!-- ========================================== -->
-    <section class="border-b border-zinc-200 bg-white px-6 py-10">
+    <section class="px-6 py-12 md:py-20">
         <div class="max-w-7xl mx-auto">
-
-            <!-- Breadcrumb -->
-            <nav class="flex items-center gap-2 text-xs text-zinc-400 mb-6" aria-label="Fil d'ariane">
-                <a href="index.html" class="hover:text-zinc-900 transition-colors">Accueil</a>
-                <iconify-icon icon="solar:arrow-right-linear" class="text-zinc-300 text-sm"></iconify-icon>
-                <span class="text-zinc-900 font-medium">Catalogue</span>
-            </nav>
-
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div>
-                    <p class="text-xs font-semibold tracking-widest text-zinc-400 uppercase mb-2">Sélection Premium</p>
-                    <h1 class="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900">Catalogue</h1>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                <div class="space-y-4">
+                    <span class="inline-block py-1 px-3 bg-emerald-50 text-emerald-700 text-[10px] font-bold tracking-widest uppercase rounded-full">Collection 2026</span>
+                    <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-zinc-900">Catalogue.</h1>
                 </div>
-                <p class="text-sm text-zinc-500 font-light max-w-sm">
-                    Des produits soigneusement sélectionnés pour sublimer votre quotidien.
+                <p class="text-zinc-500 text-lg font-light max-w-sm leading-relaxed">
+                    Une curation d'objets technologiques alliant performance brute et esthétique minimaliste.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- CONTENU PRINCIPAL : Filtres + Produits     -->
-    <!-- ========================================== -->
-    <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col lg:flex-row gap-10">
-
-        <!-- ======= SIDEBAR FILTRES ======= -->
-        <aside class="w-full lg:w-56 flex-shrink-0">
-            <div class="lg:sticky lg:top-[100px] space-y-8">
-
-                <!-- Catégories -->
-                <div>
-                    <h2 class="text-[10px] font-semibold text-zinc-400 tracking-widest uppercase mb-3">Catégories</h2>
-                    <ul class="space-y-0.5" id="category-list">
-                        <!-- Injectées par JS -->
-                    </ul>
-                </div>
-
-                <!-- Prix -->
-                <div>
-                    <h2 class="text-[10px] font-semibold text-zinc-400 tracking-widest uppercase mb-3">Prix</h2>
-                    <ul class="space-y-0.5" id="price-list">
-                        <li>
-                            <button onclick="setPriceFilter('all')" data-price="all"
-                                    class="price-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-zinc-900 bg-zinc-100 transition-all">
-                                Tous les prix
-                            </button>
-                        </li>
-                        <li>
-                            <button onclick="setPriceFilter('0-50')" data-price="0-50"
-                                    class="price-btn w-full text-left px-3 py-2 rounded-lg text-sm text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900 transition-all">
-                                Moins de 50 €
-                            </button>
-                        </li>
-                        <li>
-                            <button onclick="setPriceFilter('50-150')" data-price="50-150"
-                                    class="price-btn w-full text-left px-3 py-2 rounded-lg text-sm text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900 transition-all">
-                                50 € – 150 €
-                            </button>
-                        </li>
-                        <li>
-                            <button onclick="setPriceFilter('150+')" data-price="150+"
-                                    class="price-btn w-full text-left px-3 py-2 rounded-lg text-sm text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900 transition-all">
-                                Plus de 150 €
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Contact rapide -->
-                <div class="rounded-2xl bg-emerald-50 border border-emerald-100 p-5">
-                    <iconify-icon icon="mdi:whatsapp" class="text-2xl text-emerald-500 mb-3 block"></iconify-icon>
-                    <p class="text-sm font-medium text-zinc-900 mb-1">Besoin d'un conseil ?</p>
-                    <p class="text-xs text-zinc-500 font-light mb-4 leading-relaxed">Notre équipe répond sous 1h sur WhatsApp.</p>
-                    <a href="https://wa.me/33600000000?text=Bonjour%20Electra%2C%20j%27ai%20besoin%20d%27un%20conseil%20pour%20choisir%20un%20produit." target="_blank"
-                       class="inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 hover:text-emerald-800 transition-colors">
-                        Nous contacter <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
-                    </a>
-                </div>
-            </div>
-        </aside>
-
-        <!-- ======= GRILLE PRODUITS ======= -->
-        <main class="flex-1 min-w-0">
-
-            <!-- Barre tri + compteur -->
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-zinc-100">
-                <p id="product-count" class="text-sm text-zinc-500 font-light"></p>
-                <div class="flex items-center gap-3">
-                    <label for="sort-select" class="text-xs text-zinc-400 font-medium uppercase tracking-wider whitespace-nowrap">Trier par</label>
-                    <select id="sort-select" onchange="sortProducts(this.value)"
-                            class="text-sm font-light text-zinc-900 border border-zinc-200 rounded-xl px-4 py-2 outline-none focus:border-zinc-900 bg-white cursor-pointer">
-                        <option value="default">Populaires</option>
-                        <option value="new">Nouveautés</option>
+    <div class="sticky top-[80px] z-30 glass border-b border-zinc-200/50 mb-12">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex flex-nowrap overflow-x-auto no-scrollbar items-center justify-between gap-8">
+                <div class="flex items-center gap-2" id="category-pills">
+                    </div>
+                <div class="flex items-center gap-4 flex-shrink-0 border-l border-zinc-200 pl-8">
+                    <select id="sort-select" onchange="sortProducts(this.value)" class="bg-transparent text-sm font-semibold outline-none cursor-pointer">
+                        <option value="default">Trier par : Popularité</option>
                         <option value="price-asc">Prix croissant</option>
                         <option value="price-desc">Prix décroissant</option>
                     </select>
                 </div>
             </div>
-
-            <!-- Grille -->
-            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-12 relative">
-                <!-- Injectée par JS -->
-            </div>
-
-            <!-- Etat vide -->
-            <div id="empty-state" class="hidden flex-col items-center justify-center py-24 text-center">
-                <iconify-icon icon="solar:bag-cross-linear" class="text-5xl text-zinc-300 mb-4"></iconify-icon>
-                <h3 class="text-lg font-medium text-zinc-900 mb-2">Aucun produit trouvé</h3>
-                <p class="text-sm text-zinc-500 font-light mb-6">Essayez un autre filtre ou contactez-nous sur WhatsApp.</p>
-                <button onclick="resetFilters()" class="text-sm font-medium text-zinc-900 underline underline-offset-4">
-                    Réinitialiser les filtres
-                </button>
-            </div>
-        </main>
+        </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- FOOTER                                     -->
-    <!-- ========================================== -->
-    <footer class="bg-zinc-950 border-t border-zinc-800/50 pt-16 pb-10 px-6 mt-16">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-14 pb-14 border-b border-zinc-800/50">
-                <div class="md:col-span-1">
-                    <a href="index.html" class="text-white text-sm font-semibold tracking-[0.2em] uppercase block mb-5">Electra</a>
-                    <p class="text-sm text-zinc-500 font-light leading-relaxed max-w-xs mb-6">
-                        L'art de vivre technologique. Des produits soigneusement sélectionnés.
-                    </p>
-                    <a href="https://wa.me/33600000000" target="_blank"
-                       class="inline-flex items-center gap-2 text-sm text-emerald-400 hover:text-emerald-300 transition-colors font-light">
-                        <iconify-icon icon="mdi:whatsapp" class="text-base"></iconify-icon>
-                        +33 6 00 00 00 00
-                    </a>
-                </div>
-                <div>
-                    <h4 class="text-[10px] font-semibold text-white tracking-widest uppercase mb-5">Navigation</h4>
-                    <ul class="space-y-3">
-                        <li><a href="produits.html?cat=nouveautes" class="text-sm text-zinc-500 hover:text-white transition-colors font-light">Nouveautés</a></li>
-                        <li><a href="produits.html?cat=accessoires" class="text-sm text-zinc-500 hover:text-white transition-colors font-light">Accessoires</a></li>
-                        <li><a href="produits.html?cat=audio" class="text-sm text-zinc-500 hover:text-white transition-colors font-light">Audio</a></li>
-                        <li><a href="produits.html?cat=electromenager" class="text-sm text-zinc-500 hover:text-white transition-colors font-light">Électroménager</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-[10px] font-semibold text-white tracking-widest uppercase mb-5">Informations</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-sm text-zinc-500 hover:text-white transition-colors font-light">À propos</a></li>
-                        <li><a href="#" class="text-sm text-zinc-500 hover:text-white transition-colors font-light">Livraison &amp; Retours</a></li>
-                        <li><a href="#" class="text-sm text-zinc-500 hover:text-white transition-colors font-light">Mentions légales</a></li>
-                        <li><a href="#" class="text-sm text-zinc-500 hover:text-white transition-colors font-light">CGV</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-[10px] font-semibold text-white tracking-widest uppercase mb-5">Contact</h4>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-2.5 text-sm text-zinc-500 font-light">
-                            <iconify-icon icon="solar:map-point-linear" class="text-base mt-0.5 flex-shrink-0 text-zinc-600"></iconify-icon>
-                            Île-de-France, France
-                        </li>
-                        <li>
-                            <a href="https://wa.me/33600000000" target="_blank"
-                               class="flex items-center gap-2.5 text-sm text-zinc-500 hover:text-emerald-400 transition-colors font-light">
-                                <iconify-icon icon="mdi:whatsapp" class="text-base flex-shrink-0 text-zinc-600"></iconify-icon>
-                                +33 6 00 00 00 00
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <main class="max-w-7xl mx-auto px-6 pb-24">
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16">
             </div>
-            <div class="flex flex-col md:flex-row items-center justify-between gap-3">
-                <p class="text-xs text-zinc-600 font-light">© 2025 Electra. Basé en Île-de-France.</p>
-                <p class="text-xs text-zinc-600 font-light">Commande &amp; suivi via WhatsApp</p>
+
+        <div id="empty-state" class="hidden flex-col items-center justify-center py-32 text-center">
+            <div class="w-20 h-20 bg-zinc-100 rounded-full flex items-center justify-center mb-6">
+                <iconify-icon icon="solar:plate-linear" class="text-3xl text-zinc-400"></iconify-icon>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Aucun résultat</h3>
+            <p class="text-zinc-500 mb-8 font-light">Nous n'avons pas trouvé de produit correspondant à vos critères.</p>
+            <button onclick="resetFilters()" class="bg-zinc-900 text-white px-8 py-3 rounded-full text-sm font-medium">Réinitialiser</button>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-zinc-200 pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div class="space-y-6">
+                    <h3 class="font-bold text-lg tracking-tight text-zinc-900">ELECTRA.</h3>
+                    <p class="text-zinc-500 text-sm leading-relaxed">Le futur de la technologie est à portée de main. Basé à Paris, livré partout en France.</p>
+                </div>
+                </div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pt-12 border-t border-zinc-100">
+                <p class="text-xs text-zinc-400 font-medium tracking-wide">© 2026 ELECTRA FRANCE. TOUS DROITS RÉSERVÉS.</p>
+                <div class="flex gap-8">
+                    <a href="#" class="text-xs text-zinc-400 hover:text-zinc-900 transition-colors">Mentions Légales</a>
+                    <a href="#" class="text-xs text-zinc-400 hover:text-zinc-900 transition-colors">CGV</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bouton flottant WhatsApp -->
-    <a href="https://wa.me/33600000000?text=Bonjour%20Electra%2C%20je%20souhaite%20des%20informations%20sur%20vos%20produits." target="_blank"
-       class="fixed bottom-8 right-8 z-50 flex items-center gap-3 bg-emerald-500 text-white px-5 py-3.5 rounded-full shadow-xl shadow-emerald-500/30 hover:bg-emerald-600 transition-all duration-300 hover:scale-105 group">
-        <iconify-icon icon="mdi:whatsapp" class="text-2xl flex-shrink-0"></iconify-icon>
-        <span class="text-sm font-medium max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap">Contactez-nous</span>
+    <a href="https://wa.me/33600000000" class="fixed bottom-8 right-8 z-50 animate-pulse-btn w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
+        <iconify-icon icon="mdi:whatsapp" class="text-3xl"></iconify-icon>
     </a>
 
-    <!-- ========================================== -->
-    <!-- MODAL PRODUIT                              -->
-    <!-- ========================================== -->
-    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-end hidden opacity-0 transition-opacity duration-300">
-        <div class="absolute inset-0 bg-zinc-900/50 backdrop-blur-sm cursor-pointer" onclick="closeProductModal()"></div>
-        <div id="product-panel" class="relative w-full max-w-md h-full bg-white shadow-2xl translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] flex flex-col no-scrollbar overflow-y-auto">
-
-            <button onclick="closeProductModal()" aria-label="Fermer"
-                    class="absolute top-5 right-5 z-10 flex items-center justify-center w-9 h-9 rounded-full bg-white/90 backdrop-blur text-zinc-500 hover:text-zinc-900 shadow-sm border border-zinc-200/80 transition-all hover:scale-110">
-                <iconify-icon icon="solar:close-circle-linear" class="text-xl"></iconify-icon>
-            </button>
-
-            <div class="w-full aspect-[4/5] bg-gradient-to-br from-zinc-100 to-zinc-50 relative flex-shrink-0 overflow-hidden">
-                <img id="modal-product-img" src="" alt="" class="w-full h-full object-cover mix-blend-multiply p-6 transition-transform duration-700">
-                <span id="modal-badge" class="hidden absolute top-4 left-4 px-2.5 py-1 rounded-full bg-zinc-900 text-white text-[10px] font-semibold tracking-widest uppercase">Nouveau</span>
-            </div>
-
-            <div class="p-7 flex-1 flex flex-col">
-                <div class="mb-6">
-                    <div class="flex justify-between items-start gap-3 mb-1">
-                        <h2 id="modal-product-title" class="text-xl font-semibold tracking-tight text-zinc-900 leading-snug">Produit</h2>
-                        <span id="modal-product-price" class="text-xl font-semibold text-zinc-900 flex-shrink-0"></span>
-                    </div>
-                    <p id="modal-product-category" class="text-xs font-medium text-zinc-400 uppercase tracking-widest mb-3"></p>
-                    <p id="modal-product-desc" class="text-sm text-zinc-500 font-light leading-relaxed"></p>
-                </div>
-
-                <div class="h-px bg-zinc-100 mb-6"></div>
-
-                <div id="model-selector" class="mb-6 hidden">
-                    <h3 class="text-[10px] font-semibold text-zinc-900 tracking-widest uppercase mb-3">Modèle</h3>
-                    <div id="model-options" class="flex flex-wrap gap-2"></div>
-                </div>
-
-                <div id="color-selector" class="mb-8 hidden">
-                    <h3 class="text-[10px] font-semibold text-zinc-900 tracking-widest uppercase mb-3">
-                        Couleur &mdash; <span id="color-name" class="font-light text-zinc-500 normal-case tracking-normal"></span>
-                    </h3>
-                    <div id="color-options" class="flex gap-3.5"></div>
-                </div>
-
-                <div class="mt-auto">
-                    <button onclick="openCheckoutModal()"
-                            class="w-full flex items-center justify-center gap-2.5 py-4 rounded-2xl bg-emerald-500 text-white text-sm font-semibold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20 active:scale-[0.98]">
-                        <iconify-icon icon="mdi:whatsapp" class="text-xl"></iconify-icon>
-                        Commander via WhatsApp
-                    </button>
-                    <div class="flex items-center justify-center gap-5 mt-4">
-                        <span class="text-xs text-zinc-400 font-light flex items-center gap-1.5">
-                            <iconify-icon icon="solar:box-linear" class="text-sm"></iconify-icon> Livraison 24h offerte
-                        </span>
-                        <span class="text-xs text-zinc-400 font-light flex items-center gap-1.5">
-                            <iconify-icon icon="solar:shield-check-linear" class="text-sm"></iconify-icon> Garantie 2 ans
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- MODAL COMMANDE                             -->
-    <!-- ========================================== -->
-    <div id="checkout-modal" class="fixed inset-0 z-[60] flex items-center justify-center hidden opacity-0 transition-opacity duration-300 p-4 sm:p-6">
-        <div class="absolute inset-0 bg-zinc-900/60 backdrop-blur-md cursor-pointer" onclick="closeCheckoutModal()"></div>
-        <div id="checkout-panel" class="relative w-full max-w-3xl max-h-[90vh] bg-white rounded-3xl shadow-2xl translate-y-8 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] flex flex-col md:flex-row overflow-hidden">
-
-            <!-- Résumé (gauche, dark) -->
-            <div class="hidden md:flex flex-col w-full md:w-[42%] bg-zinc-950 p-8 flex-shrink-0">
-                <span class="text-[10px] font-semibold text-zinc-500 tracking-widest uppercase mb-6">Récapitulatif</span>
-                <div class="flex items-start gap-4 mb-8">
-                    <div class="w-16 h-16 rounded-2xl bg-zinc-800 overflow-hidden flex-shrink-0">
-                        <img id="checkout-img" src="" alt="" class="w-full h-full object-cover mix-blend-luminosity">
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <h4 id="checkout-title" class="text-sm font-medium text-white leading-snug">Produit</h4>
-                        <p id="checkout-variant" class="text-xs text-zinc-500 font-light mt-1"></p>
-                    </div>
-                </div>
-                <div class="mt-auto space-y-3">
-                    <div class="flex justify-between text-sm">
-                        <span class="text-zinc-500 font-light">Sous-total</span>
-                        <span class="text-white font-medium" id="checkout-subtotal"></span>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                        <span class="text-zinc-500 font-light">Livraison express</span>
-                        <span class="text-emerald-400 font-medium">Offerte</span>
-                    </div>
-                    <div class="h-px bg-zinc-800 my-1"></div>
-                    <div class="flex justify-between text-base">
-                        <span class="text-white font-semibold">Total</span>
-                        <span class="text-white font-semibold" id="checkout-total"></span>
-                    </div>
-                </div>
-                <div class="mt-8 p-4 rounded-2xl bg-emerald-950/60 border border-emerald-900/50">
-                    <p class="text-xs text-emerald-400 font-light flex items-start gap-2 leading-relaxed">
-                        <iconify-icon icon="mdi:whatsapp" class="text-base flex-shrink-0 mt-0.5"></iconify-icon>
-                        Votre commande sera envoyée via WhatsApp. Nous confirmons la disponibilité et organisons la livraison.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Formulaire (droite) -->
-            <div class="w-full md:w-[58%] p-7 sm:p-8 overflow-y-auto no-scrollbar relative">
-                <button onclick="closeCheckoutModal()" aria-label="Fermer"
-                        class="absolute top-6 right-6 flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 text-zinc-500 hover:text-zinc-900 transition-all hover:scale-110">
-                    <iconify-icon icon="solar:close-circle-linear" class="text-xl"></iconify-icon>
-                </button>
-                <div class="max-w-sm mx-auto">
-                    <h2 class="text-xl font-semibold tracking-tight text-zinc-900 mb-1">Finaliser la commande</h2>
-                    <p class="text-sm text-zinc-500 font-light mb-7">Renseignez vos infos — nous vous recontactons sur WhatsApp.</p>
-
-                    <form id="order-form" onsubmit="submitOrder(event)" class="space-y-5">
-                        <fieldset>
-                            <legend class="text-[10px] font-semibold text-zinc-900 tracking-widest uppercase mb-3">Vos informations</legend>
-                            <div class="space-y-2.5">
-                                <div class="grid grid-cols-2 gap-2.5">
-                                    <input type="text" name="prenom" required placeholder="Prénom"
-                                           class="w-full rounded-xl border border-zinc-200 px-4 py-3 text-sm font-light outline-none transition-all focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10 placeholder:text-zinc-400 bg-white">
-                                    <input type="text" name="nom" required placeholder="Nom"
-                                           class="w-full rounded-xl border border-zinc-200 px-4 py-3 text-sm font-light outline-none transition-all focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10 placeholder:text-zinc-400 bg-white">
-                                </div>
-                                <div class="relative">
-                                    <iconify-icon icon="mdi:whatsapp" class="absolute left-3.5 top-1/2 -translate-y-1/2 text-emerald-500 text-lg pointer-events-none"></iconify-icon>
-                                    <input type="tel" name="telephone" required placeholder="Téléphone WhatsApp"
-                                           class="w-full rounded-xl border border-zinc-200 pl-10 pr-4 py-3 text-sm font-light outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/10 placeholder:text-zinc-400 bg-white">
-                                </div>
-                            </div>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend class="text-[10px] font-semibold text-zinc-900 tracking-widest uppercase mb-3">Adresse de livraison</legend>
-                            <div class="space-y-2.5">
-                                <input type="text" name="adresse" required placeholder="Numéro et nom de rue"
-                                       class="w-full rounded-xl border border-zinc-200 px-4 py-3 text-sm font-light outline-none transition-all focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10 placeholder:text-zinc-400 bg-white">
-                                <div class="grid grid-cols-3 gap-2.5">
-                                    <input type="text" name="code_postal" required placeholder="Code postal"
-                                           class="col-span-1 w-full rounded-xl border border-zinc-200 px-4 py-3 text-sm font-light outline-none transition-all focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10 placeholder:text-zinc-400 bg-white">
-                                    <input type="text" name="ville" required placeholder="Ville"
-                                           class="col-span-2 w-full rounded-xl border border-zinc-200 px-4 py-3 text-sm font-light outline-none transition-all focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10 placeholder:text-zinc-400 bg-white">
-                                </div>
-                                <textarea name="instructions" rows="2" placeholder="Instructions optionnelles (code d'entrée, étage…)"
-                                          class="w-full rounded-xl border border-zinc-200 px-4 py-3 text-sm font-light outline-none transition-all focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10 placeholder:text-zinc-400 bg-white resize-none"></textarea>
-                            </div>
-                        </fieldset>
-
-                        <button type="submit"
-                                class="w-full h-14 flex items-center justify-center gap-2.5 rounded-2xl bg-emerald-500 text-white text-sm font-semibold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20 active:scale-[0.98]">
-                            <iconify-icon icon="mdi:whatsapp" class="text-xl"></iconify-icon>
-                            Envoyer la commande sur WhatsApp
-                        </button>
-                        <p class="text-center text-xs text-zinc-400 font-light">
-                            Vous serez redirigé vers WhatsApp avec tous les détails.
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========================================== -->
-    <!-- SCRIPTS                                    -->
-    <!-- ========================================== -->
     <script>
-        // =============================================
-        // CONFIGURATION
-        // =============================================
-        const WHATSAPP_NUMBER = '33600000000';
-
-        // =============================================
-        // CATALOGUE PRODUITS
-        // =============================================
+        // On réutilise ta logique JS qui est excellente
         const products = [
-            {
-                id: 1,
-                isNew: true,
-                name: 'Coque Cuir Pleine Fleur',
-                price: '65 €',
-                priceNum: 65,
-                category: 'Accessoires',
-                categoryLabel: 'Pour iPhone 15',
-                description: 'Confectionné en cuir pleine fleur de première qualité. Protection optimale avec une patine élégante qui se bonifie avec le temps. Compatible recharge sans fil.',
-                image: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=2070&auto=format&fit=crop',
-                models: ['15 Pro', '15 Pro Max', '15', '15 Plus'],
-                colors: [
-                    { name: 'Noir Minuit',    value: '#1C1C1E' },
-                    { name: 'Titane Naturel', value: '#B6B1A9' },
-                    { name: 'Sable',          value: '#D6CFC4' },
-                ]
-            },
-            {
-                id: 2,
-                isNew: false,
-                name: 'Casque ANC Studio',
-                price: '349 €',
-                priceNum: 349,
-                category: 'Audio',
-                categoryLabel: 'Audio Haute Fidélité',
-                description: 'Réduction de bruit active de dernière génération. Drivers 40mm pour une scène sonore large et détaillée. Autonomie 30h + étui de charge magnétique inclus.',
-                image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=2065&auto=format&fit=crop',
-                models: [],
-                colors: [
-                    { name: 'Noir',      value: '#1C1C1E' },
-                    { name: 'Blanc',     value: '#F0F0F0', border: true },
-                    { name: 'Bleu Nuit', value: '#1E3A5F' },
-                ]
-            },
-            {
-                id: 3,
-                isNew: true,
-                name: 'Chargeur MagSafe 3-en-1',
-                price: '89 €',
-                priceNum: 89,
-                category: 'Accessoires',
-                categoryLabel: 'Accessoire',
-                description: 'Station de charge sans fil pour iPhone, Apple Watch et AirPods simultanément. Charge rapide 15W MagSafe. Socle en aluminium et verre trempé Gorilla Glass.',
-                image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?q=80&w=2070&auto=format&fit=crop',
-                models: [],
-                colors: [
-                    { name: 'Aluminium',    value: '#C8C8C8', border: true },
-                    { name: 'Noir Sidéral', value: '#2C2C2C' },
-                ]
-            },
-            {
-                id: 4,
-                isNew: false,
-                name: 'Écouteurs True Wireless',
-                price: '129 €',
-                priceNum: 129,
-                category: 'Audio',
-                categoryLabel: 'Audio Premium',
-                description: 'Son spatial avec suivi dynamique de la tête. Réduction de bruit adaptative. Résistance IPX4. Jusqu\'à 6h d\'écoute + 24h avec le boîtier de charge.',
-                image: 'https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?q=80&w=2070&auto=format&fit=crop',
-                models: [],
-                colors: [
-                    { name: 'Blanc', value: '#F0F0F0', border: true },
-                    { name: 'Noir',  value: '#1C1C1E' },
-                    { name: 'Mauve', value: '#9B8EC4' },
-                ]
-            },
-            {
-                id: 5,
-                isNew: true,
-                name: 'Protection Écran Verre Trempé',
-                price: '29 €',
-                priceNum: 29,
-                category: 'Accessoires',
-                categoryLabel: 'Pour iPhone 15',
-                description: 'Verre trempé 9H anti-rayures avec kit d\'installation garanti sans bulle. Ultra-fin 0,2mm. Compatible Face ID et recharge sans fil. Lot de 2 inclus.',
-                image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?q=80&w=2124&auto=format&fit=crop',
-                models: ['15 Pro', '15 Pro Max', '15', '15 Plus'],
-                colors: []
-            },
-            {
-                id: 6,
-                isNew: false,
-                name: 'Support Voiture MagSafe',
-                price: '45 €',
-                priceNum: 45,
-                category: 'Accessoires',
-                categoryLabel: 'Accessoire Voiture',
-                description: 'Fixation magnétique MagSafe pour grille d\'aération. Charge sans fil 15W intégrée. Rotation 360°. Compatible tous iPhone 12 et supérieur.',
-                image: 'https://images.unsplash.com/photo-1617704548623-340376564e68?q=80&w=2070&auto=format&fit=crop',
-                models: [],
-                colors: [
-                    { name: 'Noir', value: '#1C1C1E' },
-                    { name: 'Argent', value: '#C0C0C0', border: true },
-                ]
-            },
-            {
-                id: 7,
-                isNew: true,
-                name: 'Enceinte Bluetooth Compacte',
-                price: '199 €',
-                priceNum: 199,
-                category: 'Audio',
-                categoryLabel: 'Enceinte Portable',
-                description: 'Son 360° de haute qualité avec basses profondes. Autonomie 20h. Résistante à l\'eau IPX7. Connexion simultanée de 2 appareils. Idéale intérieur et extérieur.',
-                image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?q=80&w=2069&auto=format&fit=crop',
-                models: [],
-                colors: [
-                    { name: 'Noir',       value: '#1C1C1E' },
-                    { name: 'Gris Pierre', value: '#9C9C9C', border: true },
-                    { name: 'Vert Sauge', value: '#7A9E7E' },
-                ]
-            },
-            {
-                id: 8,
-                isNew: false,
-                name: 'Batterie Externe MagSafe',
-                price: '79 €',
-                priceNum: 79,
-                category: 'Accessoires',
-                categoryLabel: 'Batterie Portable',
-                description: 'Batterie externe 10 000mAh avec charge MagSafe 7,5W et USB-C 20W. Design ultra-plat en aluminium brossé. Charge votre iPhone en voyage sans fil.',
-                image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=2070&auto=format&fit=crop',
-                models: [],
-                colors: [
-                    { name: 'Blanc',       value: '#F0F0F0', border: true },
-                    { name: 'Noir Minuit', value: '#1C1C1E' },
-                ]
-            },
+            { id: 1, isNew: true, name: 'Coque Cuir Pleine Fleur', price: '65 €', priceNum: 65, category: 'Accessoires', categoryLabel: 'iPhone 15 Series', description: 'Cuir premium.', image: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=2070&auto=format&fit=crop', models: ['Pro', 'Max'], colors: [{ name: 'Noir', value: '#1C1C1E' }] },
+            { id: 2, isNew: false, name: 'Casque ANC Studio', price: '349 €', priceNum: 349, category: 'Audio', categoryLabel: 'Audio Haute Fidélité', description: 'Réduction de bruit.', image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=2065&auto=format&fit=crop', models: [], colors: [{ name: 'Noir', value: '#1C1C1E' }] },
+            { id: 3, isNew: true, name: 'Chargeur MagSafe 3-en-1', price: '89 €', priceNum: 89, category: 'Accessoires', categoryLabel: 'Accessoire', description: 'Station de charge.', image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?q=80&w=2070&auto=format&fit=crop', models: [], colors: [] },
+            { id: 4, isNew: false, name: 'Écouteurs True Wireless', price: '129 €', priceNum: 129, category: 'Audio', categoryLabel: 'Audio Premium', description: 'Son spatial.', image: 'https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?q=80&w=2070&auto=format&fit=crop', models: [], colors: [] }
         ];
 
-        // =============================================
-        // ÉTAT GLOBAL
-        // =============================================
-        let currentProduct  = null;
-        let selectedModel   = '';
-        let selectedColor   = '';
-        let activeCategory  = 'Tous';
-        let activePriceFilter = 'all';
-        let activeSort      = 'default';
-        let searchQuery     = '';
+        let activeCategory = 'Tous';
+        let activeSort = 'default';
 
-        // =============================================
-        // CATEGORIES (dynamique depuis le catalogue)
-        // =============================================
-        const categories = ['Tous', ...new Set(products.map(p => p.category))];
-
-        function renderCategoryList() {
-            const list = document.getElementById('category-list');
-            list.innerHTML = categories.map(cat => `
-                <li>
-                    <button onclick="setCategory('${cat}')" data-cat="${cat}"
-                            class="cat-btn w-full text-left px-3 py-2 rounded-lg text-sm transition-all
-                                   ${cat === activeCategory
-                                       ? 'font-medium text-zinc-900 bg-zinc-100'
-                                       : 'text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900'}">
-                        ${cat}
-                        <span class="ml-1 text-xs text-zinc-400">(${cat === 'Tous' ? products.length : products.filter(p => p.category === cat).length})</span>
-                    </button>
-                </li>
+        function renderCategoryPills() {
+            const categories = ['Tous', 'Audio', 'Accessoires'];
+            const container = document.getElementById('category-pills');
+            container.innerHTML = categories.map(cat => `
+                <button onclick="setCategory('${cat}')" 
+                        class="px-6 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap
+                        ${activeCategory === cat ? 'bg-zinc-900 text-white' : 'text-zinc-500 hover:bg-zinc-100'}">
+                    ${cat}
+                </button>
             `).join('');
-        }
-
-        // =============================================
-        // FILTRAGE & TRI
-        // =============================================
-        function getFilteredProducts() {
-            let result = [...products];
-
-            // Filtre catégorie
-            if (activeCategory !== 'Tous') {
-                result = result.filter(p => p.category === activeCategory);
-            }
-
-            // Filtre prix
-            if (activePriceFilter === '0-50')   result = result.filter(p => p.priceNum < 50);
-            if (activePriceFilter === '50-150')  result = result.filter(p => p.priceNum >= 50 && p.priceNum <= 150);
-            if (activePriceFilter === '150+')    result = result.filter(p => p.priceNum > 150);
-
-            // Filtre recherche
-            if (searchQuery) {
-                const q = searchQuery.toLowerCase();
-                result = result.filter(p =>
-                    p.name.toLowerCase().includes(q) ||
-                    p.category.toLowerCase().includes(q) ||
-                    p.categoryLabel.toLowerCase().includes(q)
-                );
-            }
-
-            // Tri
-            if (activeSort === 'price-asc')  result.sort((a, b) => a.priceNum - b.priceNum);
-            if (activeSort === 'price-desc') result.sort((a, b) => b.priceNum - a.priceNum);
-            if (activeSort === 'new')        result.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
-
-            return result;
         }
 
         function setCategory(cat) {
             activeCategory = cat;
-            renderCategoryList();
+            renderCategoryPills();
             renderProducts();
         }
 
-        function setPriceFilter(range) {
-            activePriceFilter = range;
-            document.querySelectorAll('.price-btn').forEach(btn => {
-                const isActive = btn.dataset.price === range;
-                btn.className = `price-btn w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
-                    isActive ? 'font-medium text-zinc-900 bg-zinc-100' : 'text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900'
-                }`;
-            });
-            renderProducts();
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            let filtered = activeCategory === 'Tous' ? products : products.filter(p => p.category === activeCategory);
+            
+            // Tri simple
+            if (activeSort === 'price-asc') filtered.sort((a,b) => a.priceNum - b.priceNum);
+            if (activeSort === 'price-desc') filtered.sort((a,b) => b.priceNum - a.priceNum);
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="product-card-hover group cursor-pointer" onclick="openProductModal(${p.id})">
+                    <div class="aspect-[1/1] bg-[#F2F2F7] rounded-3xl overflow-hidden relative mb-6">
+                        <img src="${p.image}" class="w-full h-full object-cover mix-blend-multiply transition-transform duration-700 group-hover:scale-110">
+                        ${p.isNew ? '<span class="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-sm">Nouveau</span>' : ''}
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-[11px] font-bold text-emerald-600 uppercase tracking-wider">${p.category}</p>
+                        <h3 class="text-lg font-semibold tracking-tight text-zinc-900">${p.name}</h3>
+                        <p class="text-zinc-500 text-sm font-light">${p.categoryLabel}</p>
+                        <p class="text-zinc-900 font-bold pt-2">${p.price}</p>
+                    </div>
+                </div>
+            `).join('');
         }
 
         function sortProducts(val) {
@@ -641,269 +199,9 @@
             renderProducts();
         }
 
-        function filterProducts() {
-            searchQuery = document.getElementById('search-input').value;
-            renderProducts();
-        }
-
-        function resetFilters() {
-            activeCategory    = 'Tous';
-            activePriceFilter = 'all';
-            activeSort        = 'default';
-            searchQuery       = '';
-            if (document.getElementById('search-input'))
-                document.getElementById('search-input').value = '';
-            document.getElementById('sort-select').value = 'default';
-            renderCategoryList();
-            setPriceFilter('all');
-            renderProducts();
-        }
-
-        // =============================================
-        // RENDU GRILLE
-        // =============================================
-        function renderProducts() {
-            const filtered = getFilteredProducts();
-            const grid = document.getElementById('products-grid');
-            const empty = document.getElementById('empty-state');
-            const countEl = document.getElementById('product-count');
-
-            countEl.innerText = `${filtered.length} produit${filtered.length > 1 ? 's' : ''}`;
-
-            if (filtered.length === 0) {
-                grid.innerHTML = '';
-                empty.classList.remove('hidden');
-                empty.classList.add('flex');
-                return;
-            }
-            empty.classList.add('hidden');
-            empty.classList.remove('flex');
-
-            grid.innerHTML = filtered.map(p => `
-                <button type="button" onclick="openProductModal(${p.id})" class="group block cursor-pointer text-left w-full">
-                    <div class="aspect-[4/5] bg-zinc-100 rounded-2xl mb-4 overflow-hidden relative shadow-sm ring-1 ring-zinc-200/50 group-hover:shadow-lg transition-all duration-500">
-                        <img src="${p.image}" alt="${p.name}" loading="lazy"
-                             class="object-cover w-full h-full mix-blend-multiply group-hover:scale-105 transition-transform duration-700">
-
-                        ${p.isNew ? `<span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-zinc-900 text-white text-[10px] font-semibold tracking-widest uppercase">Nouveau</span>` : ''}
-
-                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/80 backdrop-blur text-zinc-600 text-[10px] font-medium border border-zinc-200/50">
-                            ${p.category}
-                        </span>
-
-                        <div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                            <span class="flex items-center justify-center gap-1.5 bg-white/95 backdrop-blur-md border border-zinc-200/50 text-zinc-900 text-xs font-medium py-2.5 px-6 rounded-full w-full shadow-sm">
-                                <iconify-icon icon="mdi:whatsapp" class="text-emerald-500 text-sm"></iconify-icon>
-                                Commander
-                            </span>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-start px-0.5">
-                        <div>
-                            <h3 class="text-sm font-medium text-zinc-900 group-hover:text-zinc-600 transition-colors leading-snug">${p.name}</h3>
-                            <p class="text-xs text-zinc-400 mt-1 font-light">${p.categoryLabel}</p>
-                        </div>
-                        <span class="text-sm font-semibold text-zinc-900 flex-shrink-0 ml-2">${p.price}</span>
-                    </div>
-                </button>
-            `).join('');
-        }
-
-        // =============================================
-        // RECHERCHE (toggle barre)
-        // =============================================
-        function toggleSearch() {
-            const bar = document.getElementById('search-bar');
-            bar.classList.toggle('hidden');
-            if (!bar.classList.contains('hidden')) {
-                document.getElementById('search-input').focus();
-            } else {
-                searchQuery = '';
-                renderProducts();
-            }
-        }
-
-        // =============================================
-        // MODAL PRODUIT
-        // =============================================
-        const productModal = document.getElementById('product-modal');
-        const productPanel = document.getElementById('product-panel');
-
-        function openProductModal(productId) {
-            currentProduct = products.find(p => p.id === productId);
-            if (!currentProduct) return;
-
-            document.getElementById('modal-product-title').innerText    = currentProduct.name;
-            document.getElementById('modal-product-price').innerText    = currentProduct.price;
-            document.getElementById('modal-product-img').src            = currentProduct.image;
-            document.getElementById('modal-product-img').alt            = currentProduct.name;
-            document.getElementById('modal-product-desc').innerText     = currentProduct.description;
-            document.getElementById('modal-product-category').innerText = currentProduct.categoryLabel;
-
-            const badge = document.getElementById('modal-badge');
-            currentProduct.isNew ? badge.classList.remove('hidden') : badge.classList.add('hidden');
-
-            // Modèles
-            const modelSel = document.getElementById('model-selector');
-            const modelOpt = document.getElementById('model-options');
-            if (currentProduct.models.length > 0) {
-                selectedModel = currentProduct.models[0];
-                modelOpt.innerHTML = currentProduct.models.map((m, i) => `
-                    <label class="relative cursor-pointer">
-                        <input type="radio" name="modal_model" class="peer sr-only" ${i === 0 ? 'checked' : ''}
-                               onchange="selectedModel='${m}'">
-                        <div class="rounded-xl border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-600
-                                    transition-all hover:bg-zinc-50 cursor-pointer
-                                    peer-checked:border-zinc-900 peer-checked:bg-zinc-900 peer-checked:text-white">${m}</div>
-                    </label>
-                `).join('');
-                modelSel.classList.remove('hidden');
-            } else {
-                selectedModel = '';
-                modelSel.classList.add('hidden');
-            }
-
-            // Couleurs
-            const colorSel  = document.getElementById('color-selector');
-            const colorOpt  = document.getElementById('color-options');
-            const colorName = document.getElementById('color-name');
-            if (currentProduct.colors.length > 0) {
-                selectedColor = currentProduct.colors[0].name;
-                colorName.innerText = selectedColor;
-                colorOpt.innerHTML = currentProduct.colors.map((c, i) => `
-                    <label class="relative cursor-pointer" title="${c.name}">
-                        <input type="radio" name="modal_color" class="peer sr-only" ${i === 0 ? 'checked' : ''}
-                               onchange="selectedColor='${c.name}'; document.getElementById('color-name').innerText='${c.name}'">
-                        <div class="w-8 h-8 rounded-full ring-2 ring-offset-2 ring-transparent peer-checked:ring-zinc-600 transition-all ${c.border ? 'border-2 border-zinc-300' : ''}"
-                             style="background-color:${c.value}"></div>
-                    </label>
-                `).join('');
-                colorSel.classList.remove('hidden');
-            } else {
-                selectedColor = '';
-                colorSel.classList.add('hidden');
-            }
-
-            document.body.classList.add('overflow-hidden');
-            productModal.classList.remove('hidden');
-            requestAnimationFrame(() => {
-                productModal.classList.remove('opacity-0');
-                productPanel.classList.remove('translate-x-full');
-            });
-        }
-
-        function closeProductModal() {
-            productModal.classList.add('opacity-0');
-            productPanel.classList.add('translate-x-full');
-            setTimeout(() => {
-                productModal.classList.add('hidden');
-                if (document.getElementById('checkout-modal').classList.contains('hidden')) {
-                    document.body.classList.remove('overflow-hidden');
-                }
-            }, 300);
-        }
-
-        // =============================================
-        // MODAL CHECKOUT
-        // =============================================
-        const checkoutModal = document.getElementById('checkout-modal');
-        const checkoutPanel = document.getElementById('checkout-panel');
-
-        function openCheckoutModal() {
-            if (!currentProduct) return;
-
-            document.getElementById('checkout-title').innerText    = currentProduct.name;
-            document.getElementById('checkout-subtotal').innerText = currentProduct.price;
-            document.getElementById('checkout-total').innerText    = currentProduct.price;
-            document.getElementById('checkout-img').src            = currentProduct.image;
-
-            const parts = [selectedModel, selectedColor].filter(Boolean);
-            document.getElementById('checkout-variant').innerText = parts.join(' · ');
-
-            closeProductModal();
-            checkoutModal.classList.remove('hidden');
-            setTimeout(() => {
-                checkoutModal.classList.remove('opacity-0');
-                checkoutPanel.classList.remove('translate-y-8');
-            }, 50);
-        }
-
-        function closeCheckoutModal() {
-            checkoutModal.classList.add('opacity-0');
-            checkoutPanel.classList.add('translate-y-8');
-            setTimeout(() => {
-                checkoutModal.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
-            }, 300);
-        }
-
-        // =============================================
-        // ENVOI COMMANDE VIA WHATSAPP
-        // =============================================
-        function submitOrder(event) {
-            event.preventDefault();
-            const f = event.target;
-
-            const prenom       = f.prenom.value.trim();
-            const nom          = f.nom.value.trim();
-            const telephone    = f.telephone.value.trim();
-            const adresse      = f.adresse.value.trim();
-            const codePostal   = f.code_postal.value.trim();
-            const ville        = f.ville.value.trim();
-            const instructions = f.instructions.value.trim();
-
-            const variant = [selectedModel, selectedColor].filter(Boolean).join(' · ');
-
-            const message = [
-                '🛍️ *Nouvelle commande — Electra*',
-                '',
-                `*Produit :* ${currentProduct.name}`,
-                variant ? `*Variante :* ${variant}` : null,
-                `*Prix :* ${currentProduct.price}`,
-                '',
-                `*Client :* ${prenom} ${nom}`,
-                `*Téléphone :* ${telephone}`,
-                '',
-                '📦 *Adresse de livraison :*',
-                adresse,
-                `${codePostal} ${ville}`,
-                instructions ? `ℹ️ ${instructions}` : null,
-                '',
-                '✅ Livraison express offerte',
-            ].filter(l => l !== null).join('\n');
-
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
-            closeCheckoutModal();
-        }
-
-        // =============================================
-        // FILTRE PAR URL PARAM (?cat=audio)
-        // =============================================
-        function applyUrlParam() {
-            const params = new URLSearchParams(window.location.search);
-            const cat = params.get('cat');
-            if (!cat) return;
-
-            const map = {
-                nouveautes:   null,   // géré via tri "Nouveautés"
-                accessoires:  'Accessoires',
-                audio:        'Audio',
-                electromenager: 'Électroménager',
-            };
-
-            if (cat === 'nouveautes') {
-                activeSort = 'new';
-                document.getElementById('sort-select').value = 'new';
-            } else if (map[cat]) {
-                activeCategory = map[cat];
-            }
-        }
-
-        // =============================================
-        // INIT
-        // =============================================
-        applyUrlParam();
-        renderCategoryList();
+        // Init
+        renderCategoryPills();
         renderProducts();
     </script>
-</body></html>
+</body>
+</html>

@@ -12,160 +12,121 @@ const MARQUEE_ITEMS = [
 ]
 const MARQUEE_DOUBLED = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS]
 
-// Seulement les 4 premiers produits sur la home
 const FEATURED = products.slice(0, 4)
 
 export default function Home() {
   return (
-    <>
-      {/* ===== HERO ===== */}
-      <section className="relative pt-36 pb-0 md:pt-44 px-6 overflow-hidden hero-grain bg-[#FAFAFA]">
-        {/* Lueurs */}
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-zinc-300/30 blur-[120px] rounded-full -z-10 pointer-events-none" />
-        <div className="absolute top-32 left-1/3 w-[300px] h-[200px] bg-emerald-200/20 blur-[100px] rounded-full -z-10 pointer-events-none" />
+    <div className="bg-[#FBFBFD]">
+      {/* ===== HERO SECTION ===== */}
+      <section className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-12 px-6 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#e2e2e2,transparent_50%)]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full border-x border-zinc-200/50 pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            
+            <div className="text-left">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-[11px] font-bold text-emerald-700 tracking-wider uppercase mb-8 animate-fade-in">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                Disponible en Île-de-France
+              </div>
 
-        <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
+              <h1 className="text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-tight leading-[0.95] mb-8 animate-fade-up">
+                La tech <br />
+                <span className="text-zinc-400">devient un</span> <br />
+                <span className="italic font-serif font-light text-zinc-900">art de vivre.</span>
+              </h1>
 
-          {/* Badge livraison */}
-          <span className="opacity-0 animate-fade-up inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-zinc-200 text-xs text-zinc-600 mb-8 shadow-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            Livraison express en Île-de-France
-          </span>
+              <p className="text-lg text-zinc-500 max-w-md mb-10 font-light leading-relaxed animate-fade-up delay-100">
+                Une sélection rigoureuse d'objets qui redéfinissent votre quotidien. Performance pure, esthétique absolue.
+              </p>
 
-          {/* Titre */}
-          <h1 className="opacity-0 animate-fade-up delay-100 text-[clamp(2.8rem,8vw,6rem)] font-semibold tracking-[-0.03em] leading-[1.05] max-w-4xl text-balance mb-6">
-            L'excellence<br />
-            <span className="text-zinc-400 font-light italic">sans compromis.</span>
-          </h1>
+              <div className="flex flex-wrap gap-4 animate-fade-up delay-200">
+                <Link
+                  to="/produits"
+                  className="h-14 px-10 rounded-full bg-zinc-900 text-white text-sm font-semibold hover:bg-zinc-800 transition-all flex items-center gap-2 group"
+                >
+                  Explorer le catalogue
+                  <iconify-icon icon="solar:arrow-right-linear" className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <a
+                  href="https://wa.me/33600000000"
+                  className="h-14 px-8 rounded-full bg-white border border-zinc-200 text-zinc-900 text-sm font-semibold hover:bg-zinc-50 transition-all flex items-center gap-2"
+                >
+                  <iconify-icon icon="mdi:whatsapp" className="text-emerald-500 text-xl" />
+                  Conseil direct
+                </a>
+              </div>
+            </div>
 
-          <p className="opacity-0 animate-fade-up delay-200 text-base md:text-lg text-zinc-500 max-w-xl text-balance mb-10 font-light leading-relaxed">
-            Accessoires premium, audio haute-fidélité et électroménager design —
-            sélectionnés avec soin, livrés chez vous.
-          </p>
-
-          {/* CTAs */}
-          <div className="opacity-0 animate-fade-up delay-300 flex flex-col sm:flex-row gap-3 mb-20">
-            <Link
-              to="/produits"
-              className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-zinc-900 text-white text-sm font-medium hover:bg-zinc-800 transition-all shadow-lg shadow-zinc-900/20 hover:scale-[1.02]"
-            >
-              Découvrir la collection
-              <iconify-icon icon="solar:arrow-right-linear" />
-            </Link>
-            <a
-              href="https://wa.me/33600000000?text=Bonjour%20Electra%2C%20je%20souhaite%20des%20informations%20sur%20vos%20produits."
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-white border border-zinc-200 text-zinc-800 text-sm font-medium hover:border-zinc-300 hover:bg-zinc-50 transition-all shadow-sm"
-            >
-              <iconify-icon icon="mdi:whatsapp" class="text-emerald-500 text-lg" />
-              Nous contacter
-            </a>
-          </div>
-        </div>
-
-        {/* Aperçu produits */}
-        <div className="opacity-0 animate-fade-up delay-400 relative max-w-6xl mx-auto">
-          <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
-          <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#FAFAFA] to-transparent z-10 pointer-events-none" />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {FEATURED.map((p, i) => (
-              <button
-                key={p.id}
-                type="button"
-                onClick={() => {}}
-                className={`group block overflow-hidden rounded-2xl bg-zinc-100 shadow-sm ring-1 ring-zinc-200/50 transition-transform duration-500 hover:-translate-y-1 hover:shadow-lg cursor-pointer ${
-                  i % 2 === 0 ? 'md:translate-y-6' : ''
-                }`}
-              >
-                <div className="aspect-[4/5] overflow-hidden">
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
-                  />
+            {/* Featured Bento Grid */}
+            <div className="grid grid-cols-12 grid-rows-2 gap-4 h-[500px] md:h-[600px] animate-fade-in-right">
+              <div className="col-span-7 row-span-2 relative overflow-hidden rounded-[2.5rem] bg-zinc-100 group">
+                <img src={FEATURED[0]?.image} className="absolute inset-0 w-full h-full object-cover mix-blend-multiply group-hover:scale-110 transition-transform duration-1000" alt="" />
+                <div className="absolute bottom-6 left-6 text-white bg-black/20 backdrop-blur-md p-4 rounded-2xl border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                   <p className="text-xs font-bold uppercase tracking-widest">{FEATURED[0]?.name}</p>
                 </div>
-              </button>
-            ))}
+              </div>
+              <div className="col-span-5 row-span-1 overflow-hidden rounded-[2rem] bg-zinc-200 group">
+                <img src={FEATURED[1]?.image} className="w-full h-full object-cover mix-blend-multiply group-hover:scale-110 transition-transform duration-700" alt="" />
+              </div>
+              <div className="col-span-5 row-span-1 overflow-hidden rounded-[2rem] bg-emerald-50 group">
+                <img src={FEATURED[2]?.image} className="w-full h-full object-cover mix-blend-multiply group-hover:scale-110 transition-transform duration-700" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ===== MARQUEE ===== */}
-      <div className="border-y border-zinc-200 bg-white py-3.5 overflow-hidden select-none">
+      {/* ===== MARQUEE (Plus fin) ===== */}
+      <div className="bg-white border-y border-zinc-100 py-5 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {MARQUEE_DOUBLED.map((item, i) => (
-            <span key={i} className="text-xs font-medium text-zinc-400 tracking-widest uppercase px-8">
+            <span key={i} className="text-[10px] font-bold text-zinc-400 tracking-[0.2em] uppercase px-12 flex items-center">
               {item}
             </span>
           ))}
         </div>
       </div>
 
-      {/* ===== AVANTAGES ===== */}
-      <section className="py-16 px-6 bg-white border-b border-zinc-100">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-4">
+      {/* ===== AVANTAGES (Style Minimal) ===== */}
+      <section className="py-24 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
           {[
-            {
-              icon: 'solar:delivery-linear',
-              title: 'Livraison express',
-              desc: "Partout en Île-de-France sous 24h, offerte sans minimum.",
-              iconCls: 'text-zinc-700',
-              bgCls: 'bg-zinc-100',
-            },
-            {
-              icon: 'solar:shield-check-linear',
-              title: 'Garantie 2 ans',
-              desc: "Chaque produit est couvert. Échange ou remboursement garanti.",
-              iconCls: 'text-zinc-700',
-              bgCls: 'bg-zinc-100',
-            },
-            {
-              icon: 'mdi:whatsapp',
-              title: 'Conseils & SAV WhatsApp',
-              desc: "Notre équipe répond 7j/7. Un doute ? On vous guide.",
-              iconCls: 'text-emerald-600',
-              bgCls: 'bg-emerald-50',
-            },
-          ].map(({ icon, title, desc, iconCls, bgCls }) => (
-            <div key={title} className="flex flex-col sm:items-center sm:text-center gap-3">
-              <div className={`w-10 h-10 rounded-2xl ${bgCls} flex items-center justify-center flex-shrink-0`}>
-                <iconify-icon icon={icon} class={`text-xl ${iconCls}`} />
+            { title: 'Logistique Directe', desc: 'Livraison express en 24h par nos propres coursiers en Île-de-France.', icon: 'solar:delivery-bold' },
+            { title: 'Curateur Tech', desc: 'Chaque produit est testé et validé par notre studio avant d\'être listé.', icon: 'solar:medal-star-bold' },
+            { title: 'Conciergerie WhatsApp', desc: 'Un problème ? Un doute ? Notre équipe vous répond en moins de 15 minutes.', icon: 'solar:chat-round-dots-bold' },
+          ].map((item, i) => (
+            <div key={i} className="group cursor-default">
+              <div className="mb-6 inline-flex p-3 rounded-2xl bg-zinc-100 text-zinc-900 group-hover:bg-zinc-900 group-hover:text-white transition-all duration-500">
+                <iconify-icon icon={item.icon} className="text-2xl" />
               </div>
-              <div>
-                <h3 className="text-sm font-semibold text-zinc-900 mb-0.5">{title}</h3>
-                <p className="text-sm text-zinc-500 font-light">{desc}</p>
-              </div>
+              <h3 className="text-lg font-bold mb-3 tracking-tight">{item.title}</h3>
+              <p className="text-zinc-500 font-light leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ===== COLLECTION ===== */}
-      <section id="collection" className="py-24 px-6 bg-[#FAFAFA]">
+      {/* ===== PRODUITS SELECTIONNÉS ===== */}
+      <section className="py-24 px-6 bg-white border-t border-zinc-100">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-14">
-            <div>
-              <p className="text-xs font-semibold tracking-widest text-zinc-400 uppercase mb-2">
-                Sélection du moment
-              </p>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900">
-                Pièces maîtresses
-              </h2>
+          <div className="flex items-end justify-between mb-16">
+            <div className="space-y-4">
+              <h2 className="text-4xl font-bold tracking-tight">Le Studio Electra<span className="text-emerald-500">.</span></h2>
+              <p className="text-zinc-500 font-light text-lg">Les essentiels de la saison.</p>
             </div>
-            <Link
-              to="/produits"
-              className="hidden md:flex items-center gap-1.5 text-sm text-zinc-900 hover:text-zinc-500 transition-colors pb-0.5 border-b border-zinc-300 hover:border-zinc-500"
-            >
-              Voir tout <iconify-icon icon="solar:arrow-right-linear" class="text-base" />
+            <Link to="/produits" className="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest border-b-2 border-zinc-900 pb-1">
+              Tout voir <iconify-icon icon="solar:arrow-right-linear" className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
             {FEATURED.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
@@ -173,31 +134,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== CTA WHATSAPP ===== */}
-      <section className="py-24 px-6 bg-zinc-950 overflow-hidden relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-900/30 via-zinc-950 to-zinc-950 pointer-events-none" />
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 mb-8">
-            <iconify-icon icon="mdi:whatsapp" class="text-3xl text-emerald-400" />
+      {/* ===== CTA WHATSAPP (Luxe Dark) ===== */}
+      <section className="px-6 py-20">
+        <div className="max-w-7xl mx-auto rounded-[3rem] bg-zinc-950 p-12 md:p-24 overflow-hidden relative text-center">
+          <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+          <div className="relative z-10">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">
+              Un conseil personnalisé ?
+            </h2>
+            <p className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl mx-auto mb-12">
+              Nous ne sommes pas un simple site, nous sommes vos experts tech. Contactez-nous pour une recommandation sur-mesure.
+            </p>
+            <a
+              href="https://wa.me/33600000000"
+              className="inline-flex items-center gap-4 bg-emerald-500 text-white px-10 py-5 rounded-full text-lg font-bold hover:bg-emerald-400 transition-all hover:scale-105 shadow-2xl shadow-emerald-500/20"
+            >
+              <iconify-icon icon="mdi:whatsapp" />
+              Lancer la discussion
+            </a>
           </div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-4">
-            Besoin d'un conseil ?
-          </h2>
-          <p className="text-zinc-400 font-light text-lg mb-10 max-w-lg mx-auto">
-            Notre équipe est disponible sur WhatsApp pour vous aider à choisir le bon produit ou suivre votre commande.
-          </p>
-          <a
-            href="https://wa.me/33600000000?text=Bonjour%20Electra%2C%20j%27ai%20besoin%20d%27un%20conseil."
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-3 h-14 px-10 rounded-full bg-emerald-500 text-white text-sm font-semibold hover:bg-emerald-400 transition-all shadow-lg shadow-emerald-500/20 hover:scale-[1.02]"
-          >
-            <iconify-icon icon="mdi:whatsapp" class="text-xl" />
-            Discutons sur WhatsApp
-          </a>
-          <p className="text-zinc-600 text-xs mt-6 font-light">Réponse garantie sous 1h en semaine</p>
         </div>
       </section>
-    </>
+    </div>
   )
 }
