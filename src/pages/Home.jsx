@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { products } from '../data/products'
+import { products, WHATSAPP_NUMBER } from '../data/products'
 import ProductCard from '../components/ProductCard'
 
 const MARQUEE_ITEMS = [
@@ -55,7 +55,7 @@ export default function Home() {
                   <iconify-icon icon="solar:arrow-right-linear" className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a
-                  href="https://wa.me/33600000000"
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   className="h-14 px-8 rounded-full bg-white border border-zinc-200 text-zinc-900 text-sm font-semibold hover:bg-zinc-50 transition-all flex items-center gap-2"
                 >
                   <iconify-icon icon="mdi:whatsapp" className="text-emerald-500 text-xl" />
@@ -146,7 +146,7 @@ export default function Home() {
               Nous ne sommes pas un simple site, nous sommes vos experts tech. Contactez-nous pour une recommandation sur-mesure.
             </p>
             <a
-              href="https://wa.me/33600000000"
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
               className="inline-flex items-center gap-4 bg-emerald-500 text-white px-10 py-5 rounded-full text-lg font-bold hover:bg-emerald-400 transition-all hover:scale-105 shadow-2xl shadow-emerald-500/20"
             >
               <iconify-icon icon="mdi:whatsapp" />

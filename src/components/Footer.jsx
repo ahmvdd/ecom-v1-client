@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { WHATSAPP_NUMBER } from '../data/products'
 
 export default function Footer() {
   return (
@@ -16,13 +17,13 @@ export default function Footer() {
               L'art de vivre technologique. Des produits soigneusement sélectionnés pour sublimer votre quotidien.
             </p>
             <a
-              href="https://wa.me/33600000000"
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-sm text-emerald-400 hover:text-emerald-300 transition-colors font-light"
             >
               <iconify-icon icon="mdi:whatsapp" class="text-base" />
-              +33 6 00 00 00 00
+              +33 7 82 64 56 75
             </a>
           </div>
 
@@ -58,13 +59,13 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://wa.me/33600000000"
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2.5 text-sm text-zinc-500 hover:text-emerald-400 transition-colors font-light"
                 >
                   <iconify-icon icon="mdi:whatsapp" class="text-base flex-shrink-0 text-zinc-600" />
-                  +33 6 00 00 00 00
+                  +33 7 82 64 56 75
                 </a>
               </li>
             </ul>

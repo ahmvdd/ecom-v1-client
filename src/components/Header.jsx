@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { WHATSAPP_NUMBER } from '../data/products'
 
 export default function Header() {
   return (
@@ -8,7 +9,7 @@ export default function Header() {
       <div className="bg-zinc-900 text-white text-[11px] py-2 text-center font-light tracking-wide">
         Livraison express 24h&nbsp;·&nbsp;Garantie 2 ans&nbsp;·&nbsp;Retours 30 jours&nbsp;·&nbsp;
         <a
-          href="https://wa.me/33600000000"
+          href={`https://wa.me/${WHATSAPP_NUMBER}`}
           target="_blank"
           rel="noreferrer"
           className="underline underline-offset-2 hover:text-emerald-400 transition-colors"
@@ -42,7 +43,7 @@ export default function Header() {
               <iconify-icon icon="solar:magnifer-linear" class="text-lg" />
             </Link>
             <a
-              href="https://wa.me/33600000000"
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 text-xs font-medium text-white bg-emerald-500 hover:bg-emerald-600 transition-colors px-4 py-2 rounded-full"

@@ -1,7 +1,9 @@
+import { WHATSAPP_NUMBER } from '../data/products'
+
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/33600000000?text=Bonjour%20Electra%2C%20je%20souhaite%20des%20informations%20sur%20vos%20produits."
+      href={`https://wa.me/${WHATSAPP_NUMBER}?text=Bonjour%20Electra%2C%20je%20souhaite%20des%20informations%20sur%20vos%20produits.`}
       target="_blank"
       rel="noreferrer"
       className="fixed bottom-8 right-8 z-50 flex items-center gap-3 bg-emerald-500 text-white px-5 py-3.5 rounded-full shadow-xl shadow-emerald-500/30 hover:bg-emerald-600 transition-all duration-300 hover:scale-105 group"
