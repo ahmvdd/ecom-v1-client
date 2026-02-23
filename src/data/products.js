@@ -34,6 +34,24 @@ export const products = [
       { name: 'Titane Naturel', value: '#B6B1A9' },
       { name: 'Sable',          value: '#D6CFC4' },
     ],
+    specs: [
+      { label: 'Matière',            value: 'Cuir pleine fleur tannage végétal' },
+      { label: 'Épaisseur',          value: '1,8 mm' },
+      { label: 'Recharge sans fil',  value: 'Compatible MagSafe & Qi' },
+      { label: 'Compatibilité',      value: 'iPhone 15 / 15 Plus / 15 Pro / 15 Pro Max' },
+      { label: 'Poids',              value: '28 g' },
+    ],
+    guide: [
+      { step: 1, title: 'Installer la coque', desc: 'Glissez votre iPhone dans la coque en commençant par le coin inférieur, puis appuyez sur les côtés jusqu\'au clic de fermeture.' },
+      { step: 2, title: 'Recharger sans fil', desc: 'Posez simplement votre iPhone sur tout chargeur MagSafe ou Qi — la coque ne perturbe pas la charge.' },
+      { step: 3, title: 'Entretenir le cuir', desc: 'Essuyez avec un chiffon sec ou légèrement humide. Évitez les produits chimiques pour préserver la patine naturelle.' },
+    ],
+    tips: [
+      'Le cuir pleine fleur développe une patine unique avec le temps — c\'est normal et souhaitable.',
+      'Évitez une exposition prolongée au soleil direct pour ne pas décolorer le cuir.',
+      'Un léger frottement avec un chiffon doux ravive les couleurs et nourrit le cuir.',
+      'Retirez la coque de temps en temps pour nettoyer l\'intérieur et éviter l\'accumulation de poussière.',
+    ],
   },
   {
     id: 2,
@@ -53,6 +71,26 @@ export const products = [
       { name: 'Blanc',      value: '#F0F0F0', border: true },
       { name: 'Noir',       value: '#1C1C1E' },
     ],
+    specs: [
+      { label: 'Driver',             value: '40 mm custom' },
+      { label: 'Réduction de bruit', value: 'ANC active + mode Transparence' },
+      { label: 'Son spatial',        value: 'Dolby Atmos + suivi tête' },
+      { label: 'Autonomie',          value: '20h (ANC activé)' },
+      { label: 'Connectivité',       value: 'Bluetooth 5.0 + puce H1' },
+      { label: 'Charge',             value: 'Lightning (câble inclus)' },
+    ],
+    guide: [
+      { step: 1, title: 'Première connexion', desc: 'Ouvrez le boîtier près de votre iPhone. Une animation apparaît automatiquement pour appairer en un tap.' },
+      { step: 2, title: 'Activer la réduction de bruit', desc: 'Appuyez sur la couronne Digital Crown pour basculer entre ANC, mode Transparence et désactivé.' },
+      { step: 3, title: 'Son spatial', desc: 'Activez le Son spatial dans les réglages Bluetooth de votre iPhone pour une expérience cinéma immersive.' },
+      { step: 4, title: 'Recharger', desc: 'Branchez le câble Lightning fourni. Une charge de 5 min offre 1h30 d\'écoute.' },
+    ],
+    tips: [
+      'Rangez les AirPods Max dans leur étui Smart Case pour activer le mode veille ultra-basse consommation.',
+      'Utilisez le mode Transparence en ville pour rester attentif à votre environnement tout en écoutant.',
+      'Nettoyez les coussinets avec un chiffon légèrement humide — ils sont amovibles et remplaçables.',
+      'La couronne Digital Crown permet aussi de contrôler le volume et de passer les pistes.',
+    ],
   },
   {
     id: 3,
@@ -70,6 +108,26 @@ export const products = [
       { name: 'Aluminium',    value: '#C8C8C8', border: true },
       { name: 'Noir Sidéral', value: '#2C2C2C' },
     ],
+    specs: [
+      { label: 'Puissance iPhone',    value: '15W MagSafe' },
+      { label: 'Puissance Watch',     value: '5W charge rapide' },
+      { label: 'Puissance AirPods',   value: '5W Qi' },
+      { label: 'Matériaux',           value: 'Aluminium + verre trempé' },
+      { label: 'Câble intégré',       value: '1,5m USB-C' },
+      { label: 'Certification',       value: 'MFi Apple officielle' },
+    ],
+    guide: [
+      { step: 1, title: 'Brancher la station', desc: 'Connectez le câble USB-C à l\'adaptateur secteur (20W minimum recommandé, non inclus).' },
+      { step: 2, title: 'Poser l\'iPhone', desc: 'L\'aimant MagSafe aligne automatiquement votre iPhone pour une charge 15W optimale.' },
+      { step: 3, title: 'Poser l\'Apple Watch', desc: 'Placez votre montre sur le module incliné — compatible charge rapide Series 7 et plus.' },
+      { step: 4, title: 'Poser les AirPods', desc: 'Le boîtier de charge sans fil de vos AirPods se pose sur la zone Qi inférieure.' },
+    ],
+    tips: [
+      'Utilisez un adaptateur 20W ou plus pour obtenir la charge 15W maximale sur l\'iPhone.',
+      'La station fonctionne aussi avec n\'importe quel téléphone compatible Qi.',
+      'Évitez de poser des cartes bancaires à proximité du module MagSafe.',
+      'Un témoin LED discret indique que la charge est active — idéal pour la nuit.',
+    ],
   },
   {
     id: 4,
@@ -86,6 +144,26 @@ export const products = [
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
     ],
+    specs: [
+      { label: 'Puce',               value: 'Apple H2' },
+      { label: 'Réduction de bruit', value: 'ANC adaptatif 2e gen' },
+      { label: 'Autonomie écouteurs', value: '6h (ANC), 7h sans ANC' },
+      { label: 'Autonomie totale',   value: '30h avec boîtier MagSafe' },
+      { label: 'Résistance',         value: 'IPX4 (eau et sueur)' },
+      { label: 'Charge boîtier',     value: 'MagSafe / Lightning / Qi' },
+    ],
+    guide: [
+      { step: 1, title: 'Appairer', desc: 'Ouvrez le boîtier près de votre iPhone connecté à votre identifiant Apple — l\'appairage est instantané.' },
+      { step: 2, title: 'Ajuster l\'embout', desc: 'Faites le test d\'ajustement dans les réglages Bluetooth pour optimiser l\'isolation et le son.' },
+      { step: 3, title: 'Contrôles tactiles', desc: 'Appuyez sur le bord plat pour lecture/pause, maintenez pour changer le mode ANC, glissez pour le volume.' },
+      { step: 4, title: 'Recharger', desc: 'Posez le boîtier sur un chargeur MagSafe ou branchez en Lightning. 5 min de charge = 1h d\'écoute.' },
+    ],
+    tips: [
+      'Activez le "Son spatial personnalisé" dans les réglages — Apple scanne votre oreille pour un rendu sur mesure.',
+      'Le mode Transparence adaptatif baisse automatiquement le volume si quelqu\'un vous parle.',
+      'Nettoyez les grilles avec un cure-dent sec — jamais d\'eau directement sur les écouteurs.',
+      'Portez un seul écouteur en mode mono : la détection automatique met la lecture en pause.',
+    ],
   },
   {
     id: 5,
@@ -100,6 +178,26 @@ export const products = [
     image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?q=80&w=2124&auto=format&fit=crop',
     models: ['15 Pro', '15 Pro Max', '15', '15 Plus'],
     colors: [],
+    specs: [
+      { label: 'Dureté',            value: '9H (verre de saphir synthétique)' },
+      { label: 'Épaisseur',         value: '0,2 mm ultra-fin' },
+      { label: 'Traitement',        value: 'Anti-rayures + oléophobe anti-trace' },
+      { label: 'Compatibilité',     value: 'Face ID, True Tone, recharge sans fil' },
+      { label: 'Contenu',           value: 'Lot de 2 protections + kit pose' },
+      { label: 'Installation',      value: 'Guidée sans bulle garantie' },
+    ],
+    guide: [
+      { step: 1, title: 'Nettoyer l\'écran', desc: 'Utilisez l\'auréole et le chiffon microfibre fournis pour dégraisser parfaitement l\'écran.' },
+      { step: 2, title: 'Utiliser le cadre de pose', desc: 'Placez l\'iPhone dans le guide inclus pour un alignement parfait sans effort.' },
+      { step: 3, title: 'Appliquer', desc: 'Retirez la protection, posez par gravité, appuyez du centre vers les bords pour chasser les bulles.' },
+      { step: 4, title: 'Laisser reposer', desc: 'Attendez 24h avant de l\'exposer à l\'eau pour que l\'adhésif cure correctement.' },
+    ],
+    tips: [
+      'Si une bulle apparaît, soulever légèrement le coin avec l\'onglet fourni et ré-appliquer.',
+      'Nettoyez l\'écran avec un chiffon microfibre — les lingettes à alcool dégradent le traitement anti-traces.',
+      'Le verre 9H résiste aux clés et pièces de monnaie — votre écran d\'origine reste intact.',
+      'En cas de choc, c\'est la protection qui casse, pas votre écran — c\'est son rôle.',
+    ],
   },
   {
     id: 6,
@@ -115,6 +213,25 @@ export const products = [
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
+    ],
+    specs: [
+      { label: 'Certification',   value: 'MFi Apple (Made for iPhone)' },
+      { label: 'Puissance max',   value: '20W charge rapide' },
+      { label: 'Longueur',        value: '1,5 m' },
+      { label: 'Gaine',           value: 'Nylon tressé résistant' },
+      { label: 'Compatibilité',   value: 'iPhone 5 à 14, iPad, AirPods' },
+      { label: 'Connecteurs',     value: 'USB-C + Lightning' },
+    ],
+    guide: [
+      { step: 1, title: 'Brancher l\'iPhone', desc: 'Connectez l\'extrémité Lightning à votre iPhone — la forme est symétrique, pas d\'inquiétude sur le sens.' },
+      { step: 2, title: 'Utiliser un adaptateur 20W', desc: 'Pour profiter de la charge rapide, utilisez un adaptateur USB-C 20W (vendu séparément).' },
+      { step: 3, title: 'Charger iPad et AirPods', desc: 'Le même câble charge votre iPad et votre boîtier AirPods — un seul câble pour tout.' },
+    ],
+    tips: [
+      'Ne pliez jamais le câble à angle droit près des connecteurs — c\'est là que la tresse protège le plus.',
+      'Débranchez en tenant le connecteur, jamais en tirant sur le câble.',
+      'Un câble MFi certifié évite les alertes "accessoire non pris en charge" d\'iOS.',
+      'Rangez-le enroulé sans serrer pour maximiser sa durée de vie.',
     ],
   },
   {
@@ -134,6 +251,26 @@ export const products = [
       { name: 'Or',     value: '#D4AF37' },
       { name: 'Noir',   value: '#1C1C1E' },
     ],
+    specs: [
+      { label: 'Écran',          value: 'OLED Always-On Retina (dernier gen)' },
+      { label: 'Boîtier',        value: 'Aluminium ou acier inoxydable' },
+      { label: 'Santé',          value: 'ECG, SpO2, température, fréquence cardiaque' },
+      { label: 'Étanchéité',     value: 'WR50 (50 mètres)' },
+      { label: 'Autonomie',      value: 'Jusqu\'à 18h (36h mode économie)' },
+      { label: 'Bracelet',       value: 'Milanais magnétique inclus' },
+    ],
+    guide: [
+      { step: 1, title: 'Configurer avec l\'iPhone', desc: 'Ouvrez l\'app Apple Watch sur votre iPhone et approchez la montre — la configuration est automatique en 3 minutes.' },
+      { step: 2, title: 'Prendre un ECG', desc: 'Ouvrez l\'app ECG sur la montre, posez votre doigt sur la couronne Digital Crown et attendez 30 secondes.' },
+      { step: 3, title: 'Activer le suivi du sommeil', desc: 'Dans l\'app Santé de votre iPhone, activez le suivi du sommeil et définissez vos horaires.' },
+      { step: 4, title: 'Personnaliser le cadran', desc: 'Maintenez le doigt sur le cadran pour le modifier — ajoutez vos complications préférées.' },
+    ],
+    tips: [
+      'Portez la montre un cran plus serré que vous ne le pensez pour des mesures de santé précises.',
+      'Activez le mode théâtre la nuit pour désactiver l\'écran Always-On sans perdre les alertes.',
+      'Utilisez la détection de chute et SOS urgences — des fonctions qui peuvent sauver des vies.',
+      'Chargez la nuit pendant 1h30 — c\'est suffisant pour une journée complète.',
+    ],
   },
   {
     id: 8,
@@ -150,6 +287,26 @@ export const products = [
     colors: [
       { name: 'Blanc',       value: '#F5F5F5', border: true },
       { name: 'Noir Minuit', value: '#1C1C1E' },
+    ],
+    specs: [
+      { label: 'Capacité',        value: '1 460 mAh' },
+      { label: 'Puissance',       value: '7,5W sans fil (MagSafe)' },
+      { label: 'Recharge batterie', value: '15W via Lightning' },
+      { label: 'Compatibilité',   value: 'iPhone 12 et supérieur' },
+      { label: 'Matière',         value: 'Silicone doux anti-traces' },
+      { label: 'Poids',           value: '82 g' },
+    ],
+    guide: [
+      { step: 1, title: 'Fixer la batterie', desc: 'Approchez la batterie de l\'arrière de votre iPhone — l\'aimant MagSafe se positionne et s\'enclenche automatiquement.' },
+      { step: 2, title: 'Suivre la charge', desc: 'Le niveau de charge s\'affiche dans le widget Batteries de votre iPhone en temps réel.' },
+      { step: 3, title: 'Recharger la batterie', desc: 'Branchez un câble Lightning sur la batterie pendant qu\'elle est fixée à l\'iPhone — les deux se rechargent en même temps.' },
+      { step: 4, title: 'Optimisation intelligente', desc: 'La batterie MagSafe s\'arrête de charger à 90% pour préserver la batterie de l\'iPhone sur le long terme.' },
+    ],
+    tips: [
+      'La batterie fonctionne même en mouvement — idéale lors de vos déplacements ou sorties.',
+      'Elle peut rester fixée dans une coque MagSafe compatible sans perdre en efficacité.',
+      'La charge s\'optimise automatiquement selon vos habitudes grâce à iOS.',
+      'Évitez les températures extrêmes (plus de 35°C) pour préserver les performances à long terme.',
     ],
   },
 ]

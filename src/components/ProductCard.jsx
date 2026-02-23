@@ -1,14 +1,12 @@
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { useModal } from '../context/ModalContext'
 
 export default function ProductCard({ product, showCategory = false }) {
   const { openProductModal } = useModal()
 
   return (
-    <button
-      type="button"
-      onClick={() => openProductModal(product)}
-      className="group block cursor-pointer text-left w-full"
-    >
+    <div className="group block text-left w-full">
       {/* Image */}
       <div className="aspect-[4/5] bg-zinc-100 rounded-2xl mb-4 overflow-hidden relative shadow-sm ring-1 ring-zinc-200/50 group-hover:shadow-lg transition-all duration-500">
         <img
@@ -32,12 +30,22 @@ export default function ProductCard({ product, showCategory = false }) {
           </span>
         )}
 
-        {/* Overlay hover */}
-        <div className="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-          <span className="flex items-center justify-center gap-1.5 bg-white/95 backdrop-blur-md border border-zinc-200/50 text-zinc-900 text-xs font-medium py-2.5 px-6 rounded-full w-full shadow-sm">
-            <iconify-icon icon="mdi:whatsapp" class="text-emerald-500 text-sm" />
+        {/* Overlay hover — deux boutons */}
+        <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 flex gap-2">
+          <button
+            type="button"
+            onClick={() => openProductModal(product)}
+            className="flex-1 bg-zinc-900/90 backdrop-blur-md text-white text-xs font-medium py-2.5 px-3 rounded-full shadow-sm hover:bg-zinc-900 transition-colors"
+          >
             Commander
-          </span>
+          </button>
+          <Link
+            to={`/produit/${product.id}`}
+            onClick={(e) => e.stopPropagation()}
+            className="flex-1 flex items-center justify-center bg-white/95 backdrop-blur-md border border-zinc-200/50 text-zinc-900 text-xs font-medium py-2.5 px-3 rounded-full shadow-sm hover:bg-white transition-colors"
+          >
+            Voir en détail
+          </Link>
         </div>
       </div>
 
@@ -51,6 +59,11 @@ export default function ProductCard({ product, showCategory = false }) {
         </div>
         <span className="text-sm font-semibold text-zinc-900 flex-shrink-0 ml-2">{product.price}</span>
       </div>
-    </button>
+    </div>
   )
+}
+
+ProductCard.propTypes = {
+  product:      PropTypes.object.isRequired,
+  showCategory: PropTypes.bool,
 }

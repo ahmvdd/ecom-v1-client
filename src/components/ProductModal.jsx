@@ -135,10 +135,9 @@ export default function ProductModal() {
               <div className="mt-auto">
                 <button
                   onClick={openCheckoutModal}
-                  className="w-full flex items-center justify-center gap-2.5 py-4 rounded-2xl bg-emerald-500 text-white text-sm font-semibold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20 active:scale-[0.98]"
+                  className="w-full flex items-center justify-center py-4 rounded-2xl bg-zinc-900 text-white text-sm font-semibold hover:bg-zinc-800 transition-all shadow-lg active:scale-[0.98]"
                 >
-                  <iconify-icon icon="mdi:whatsapp" class="text-xl" />
-                  Commander via WhatsApp
+                  Commander
                 </button>
                 <div className="flex items-center justify-center gap-5 mt-4">
                   <span className="text-xs text-zinc-400 font-light flex items-center gap-1.5">
