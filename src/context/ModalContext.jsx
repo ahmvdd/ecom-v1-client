@@ -27,7 +27,10 @@ export function ModalProvider({ children }) {
     setProductModalOpen(false)
   }
 
-  function openCheckoutModal() {
+  function openCheckoutModal(product) {
+    if (product) {
+      setCurrentProduct(product)
+    }
     setProductModalOpen(false)
     setCheckoutModalOpen(true)
   }
