@@ -51,7 +51,7 @@ export default function CheckoutModal() {
       formRef.current?.reset()
     } catch (err) {
       console.error('EmailJS error:', err)
-      alert('Erreur lors de l\'envoi. Réessayez ou contactez-nous directement.')
+      alert(`Erreur EmailJS : ${err?.text || err?.message || JSON.stringify(err)}`)
     } finally {
       setSending(false)
     }
