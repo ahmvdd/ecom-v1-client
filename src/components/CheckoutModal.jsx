@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
 import { useModal } from '../context/ModalContext'
-import { WHATSAPP_NUMBER } from '../data/products'
 
 export default function CheckoutModal() {
   const {
@@ -12,9 +11,10 @@ export default function CheckoutModal() {
     selectedColor,
   } = useModal()
 
-  const formRef    = useRef(null)
-  const [sending, setSending] = useState(false)
-  const isOpen     = checkoutModalOpen && currentProduct !== null
+  const formRef     = useRef(null)
+  const [sending,  setSending]  = useState(false)
+  const [success,  setSuccess]  = useState(false)
+  const isOpen      = checkoutModalOpen && currentProduct !== null
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -27,10 +27,8 @@ export default function CheckoutModal() {
     const codePostal   = data.get('code_postal').trim()
     const ville        = data.get('ville').trim()
     const instructions = data.get('instructions').trim()
+    const variant      = [selectedModel, selectedColor].filter(Boolean).join(' · ')
 
-    const variant = [selectedModel, selectedColor].filter(Boolean).join(' · ')
-
-    // ---- Envoi email via EmailJS ----
     setSending(true)
     try {
       await emailjs.send(
@@ -49,35 +47,19 @@ export default function CheckoutModal() {
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       )
+      setSuccess(true)
+      formRef.current?.reset()
     } catch (err) {
       console.error('EmailJS error:', err)
+      alert('Erreur lors de l\'envoi. Réessayez ou contactez-nous directement.')
     } finally {
       setSending(false)
     }
+  }
 
-    // ---- Ouverture WhatsApp (inchangé) ----
-    const lines = [
-      '🛍️ *Nouvelle commande — Electra*',
-      '',
-      `*Produit :* ${currentProduct.name}`,
-      variant ? `*Variante :* ${variant}` : null,
-      `*Prix :* ${currentProduct.price}`,
-      '',
-      `*Client :* ${prenom} ${nom}`,
-      `*Téléphone :* ${telephone}`,
-      '',
-      '📦 *Adresse de livraison :*',
-      adresse,
-      `${codePostal} ${ville}`,
-      instructions ? `ℹ️ ${instructions}` : null,
-      '',
-      '✅ Livraison express offerte',
-    ]
-
-    const message = lines.filter((l) => l !== null).join('\n')
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank')
+  function handleClose() {
     closeCheckoutModal()
-    formRef.current?.reset()
+    setTimeout(() => setSuccess(false), 400)
   }
 
   const inputCls =
@@ -87,7 +69,7 @@ export default function CheckoutModal() {
     <>
       {/* Backdrop */}
       <div
-        onClick={closeCheckoutModal}
+        onClick={handleClose}
         className={`fixed inset-0 z-[60] bg-zinc-900/60 backdrop-blur-md transition-opacity duration-300 ${
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
@@ -95,19 +77,37 @@ export default function CheckoutModal() {
 
       {/* Panel centré */}
       <div
-        className={`fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300 pointer-events-none ${
+        className={`fixed inset-0 z-[60] flex items-end sm:items-center justify-center sm:p-6 transition-opacity duration-300 pointer-events-none ${
           isOpen ? 'opacity-100' : 'opacity-0'
         }`}
       >
         <div
-          className={`relative w-full max-w-3xl max-h-[90vh] bg-white rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden pointer-events-auto transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-            isOpen ? 'translate-y-0' : 'translate-y-8'
+          className={`relative w-full max-w-3xl bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col md:flex-row pointer-events-auto transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+            isOpen ? 'translate-y-0' : 'translate-y-full sm:translate-y-8'
           }`}
+          style={{ maxHeight: '92dvh' }}
         >
-          {!currentProduct ? null : (
+          {!currentProduct ? null : success ? (
+            /* ---- Confirmation ---- */
+            <div className="flex flex-col items-center justify-center p-12 text-center w-full">
+              <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center mb-5">
+                <iconify-icon icon="solar:check-circle-bold" class="text-4xl text-emerald-500" />
+              </div>
+              <h2 className="text-xl font-semibold text-zinc-900 mb-2">Commande reçue !</h2>
+              <p className="text-sm text-zinc-500 font-light mb-8 max-w-xs">
+                Nous avons bien reçu votre commande pour <strong>{currentProduct.name}</strong>. Nous vous recontactons très rapidement.
+              </p>
+              <button
+                onClick={handleClose}
+                className="px-8 py-3 rounded-full bg-zinc-900 text-white text-sm font-semibold hover:bg-zinc-800 transition-all"
+              >
+                Fermer
+              </button>
+            </div>
+          ) : (
             <>
-              {/* ---- Résumé commande (gauche, dark) ---- */}
-              <div className="hidden md:flex flex-col w-full md:w-[42%] bg-zinc-950 p-8 flex-shrink-0">
+              {/* ---- Résumé commande (gauche, dark) — masqué sur mobile ---- */}
+              <div className="hidden md:flex flex-col w-full md:w-[42%] bg-zinc-950 p-8 flex-shrink-0 rounded-l-3xl">
                 <span className="text-[10px] font-semibold text-zinc-500 tracking-widest uppercase mb-6">
                   Récapitulatif
                 </span>
@@ -146,35 +146,48 @@ export default function CheckoutModal() {
                   </div>
                 </div>
 
-                <div className="mt-8 p-4 rounded-2xl bg-emerald-950/60 border border-emerald-900/50">
-                  <p className="text-xs text-emerald-400 font-light flex items-start gap-2 leading-relaxed">
-                    <iconify-icon icon="mdi:whatsapp" class="text-base flex-shrink-0 mt-0.5" />
-                    Votre commande sera envoyée via WhatsApp. Nous confirmons la disponibilité et organisons la livraison.
+                <div className="mt-8 p-4 rounded-2xl bg-zinc-900 border border-zinc-800">
+                  <p className="text-xs text-zinc-400 font-light flex items-start gap-2 leading-relaxed">
+                    <iconify-icon icon="solar:letter-bold" class="text-base flex-shrink-0 mt-0.5 text-emerald-400" />
+                    Votre commande est transmise par email. Nous vous confirmons la disponibilité et la livraison.
                   </p>
                 </div>
               </div>
 
               {/* ---- Formulaire (droite) ---- */}
-              <div className="w-full md:w-[58%] p-7 sm:p-8 overflow-y-auto no-scrollbar relative">
+              <div className="w-full md:w-[58%] p-6 sm:p-8 overflow-y-auto overscroll-contain relative">
+                {/* Indicateur drag mobile */}
+                <div className="md:hidden w-10 h-1 rounded-full bg-zinc-200 mx-auto mb-5" />
+
                 <button
-                  onClick={closeCheckoutModal}
+                  onClick={handleClose}
                   aria-label="Fermer"
-                  className="absolute top-6 right-6 flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 text-zinc-500 hover:text-zinc-900 transition-all hover:scale-110"
+                  className="absolute top-5 right-5 sm:top-6 sm:right-6 flex items-center justify-center w-8 h-8 rounded-full bg-zinc-100 text-zinc-500 hover:text-zinc-900 transition-all"
                 >
                   <iconify-icon icon="solar:close-circle-linear" class="text-xl" />
                 </button>
+
+                {/* Résumé compact mobile */}
+                <div className="md:hidden flex items-center gap-3 mb-5 p-3 rounded-2xl bg-zinc-50 border border-zinc-100">
+                  <div className="w-10 h-10 rounded-xl bg-zinc-200 overflow-hidden flex-shrink-0">
+                    <img src={currentProduct.image} alt={currentProduct.name} className="w-full h-full object-cover mix-blend-multiply" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold text-zinc-900 truncate">{currentProduct.name}</p>
+                    <p className="text-xs text-zinc-400 font-light">{currentProduct.price} · Livraison offerte</p>
+                  </div>
+                </div>
 
                 <div className="max-w-sm mx-auto">
                   <h2 className="text-xl font-semibold tracking-tight text-zinc-900 mb-1">
                     Finaliser la commande
                   </h2>
-                  <p className="text-sm text-zinc-500 font-light mb-7">
-                    Renseignez vos infos — nous vous recontactons sur WhatsApp.
+                  <p className="text-sm text-zinc-500 font-light mb-6">
+                    Renseignez vos infos — nous vous recontactons rapidement.
                   </p>
 
-                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
 
-                    {/* Infos personnelles */}
                     <fieldset>
                       <legend className="text-[10px] font-semibold text-zinc-900 tracking-widest uppercase mb-3">
                         Vos informations
@@ -184,23 +197,16 @@ export default function CheckoutModal() {
                           <input type="text" name="prenom" required placeholder="Prénom" className={inputCls} />
                           <input type="text" name="nom"    required placeholder="Nom"    className={inputCls} />
                         </div>
-                        <div className="relative">
-                          <iconify-icon
-                            icon="mdi:whatsapp"
-                            class="absolute left-3.5 top-1/2 -translate-y-1/2 text-emerald-500 text-lg pointer-events-none"
-                          />
-                          <input
-                            type="tel"
-                            name="telephone"
-                            required
-                            placeholder="Téléphone WhatsApp"
-                            className={`${inputCls} pl-10 focus:border-emerald-400 focus:ring-emerald-400/10`}
-                          />
-                        </div>
+                        <input
+                          type="tel"
+                          name="telephone"
+                          required
+                          placeholder="Téléphone"
+                          className={inputCls}
+                        />
                       </div>
                     </fieldset>
 
-                    {/* Adresse */}
                     <fieldset>
                       <legend className="text-[10px] font-semibold text-zinc-900 tracking-widest uppercase mb-3">
                         Adresse de livraison
@@ -229,14 +235,16 @@ export default function CheckoutModal() {
                     <button
                       type="submit"
                       disabled={sending}
-                      className="w-full h-14 flex items-center justify-center gap-2.5 rounded-2xl bg-emerald-500 text-white text-sm font-semibold hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="w-full h-14 flex items-center justify-center gap-2 rounded-2xl bg-zinc-900 text-white text-sm font-semibold hover:bg-zinc-800 transition-all shadow-lg active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      <iconify-icon icon="mdi:whatsapp" class="text-xl" />
-                      {sending ? 'Envoi en cours…' : 'Envoyer la commande sur WhatsApp'}
+                      {sending
+                        ? <><iconify-icon icon="svg-spinners:ring-resize" class="text-lg" /> Envoi en cours…</>
+                        : 'Confirmer la commande'
+                      }
                     </button>
 
-                    <p className="text-center text-xs text-zinc-400 font-light">
-                      Vous serez redirigé vers WhatsApp avec tous les détails.
+                    <p className="text-center text-xs text-zinc-400 font-light pb-2">
+                      Votre commande sera traitée par notre équipe sous 24h.
                     </p>
                   </form>
                 </div>
