@@ -118,7 +118,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-16">
             <div className="space-y-4">
-              <h2 className="text-4xl font-bold tracking-tight">Le Studio Electra<span className="text-emerald-500">.</span></h2>
+              <h2 className="text-4xl font-bold tracking-tight">Paris'Conect<span className="text-emerald-500">.</span></h2>
               <p className="text-zinc-500 font-light text-lg">Les essentiels de la saison.</p>
             </div>
             <Link to="/produits" className="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest border-b-2 border-zinc-900 pb-1">
@@ -131,6 +131,65 @@ export default function Home() {
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ===== BIO ENTREPRISE ===== */}
+      <section className="py-24 px-6 bg-zinc-950">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+
+          {/* Texte */}
+          <div>
+            <span className="text-[10px] font-semibold text-emerald-400 tracking-widest uppercase block mb-5">
+              Qui sommes-nous
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-snug mb-6">
+              Paris'Conect, né à Paris.<br />
+              <span className="text-zinc-400 font-light italic">Pour les passionnés d'Apple.</span>
+            </h2>
+            <p className="text-zinc-400 font-light leading-relaxed text-base mb-5">
+              Paris'Conect est une boutique spécialisée dans les accessoires Apple premium, basée en Île-de-France. Fondée par des passionnés de technologie, nous sélectionnons chaque produit avec soin pour vous garantir qualité, compatibilité et durabilité.
+            </p>
+            <p className="text-zinc-400 font-light leading-relaxed text-base mb-8">
+              Coques, chargeurs, audio, supports — chaque article est testé et approuvé avant de rejoindre notre catalogue. Notre engagement : un service client réactif, une livraison express 24h, et une garantie 2 ans sur tous nos produits.
+            </p>
+            <div className="flex flex-wrap gap-6">
+              <div className="text-center">
+                <p className="text-2xl font-bold text-white">500+</p>
+                <p className="text-xs text-zinc-500 font-light mt-1">Clients satisfaits</p>
+              </div>
+              <div className="w-px bg-zinc-800" />
+              <div className="text-center">
+                <p className="text-2xl font-bold text-white">24h</p>
+                <p className="text-xs text-zinc-500 font-light mt-1">Livraison express</p>
+              </div>
+              <div className="w-px bg-zinc-800" />
+              <div className="text-center">
+                <p className="text-2xl font-bold text-white">2 ans</p>
+                <p className="text-xs text-zinc-500 font-light mt-1">Garantie produits</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Valeurs */}
+          <div className="grid grid-cols-1 gap-4">
+            {[
+              { icon: 'solar:shield-check-linear', title: 'Qualité certifiée', desc: 'Chaque produit est sélectionné et testé. Seuls les meilleurs accessoires Apple rejoignent notre boutique.' },
+              { icon: 'solar:box-linear',          title: 'Livraison express', desc: 'Commandez avant 18h, recevez le lendemain partout en France. Suivi en temps réel inclus.' },
+              { icon: 'solar:chat-dots-linear',    title: 'SAV sur WhatsApp', desc: 'Notre équipe répond 7j/7 sur WhatsApp pour vous conseiller avant et après votre achat.' },
+            ].map((v) => (
+              <div key={v.title} className="flex items-start gap-4 p-5 rounded-2xl bg-zinc-900 border border-zinc-800">
+                <div className="w-10 h-10 rounded-xl bg-zinc-800 flex items-center justify-center flex-shrink-0">
+                  <iconify-icon icon={v.icon} class="text-xl text-emerald-400" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-white mb-1">{v.title}</p>
+                  <p className="text-xs text-zinc-500 font-light leading-relaxed">{v.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 

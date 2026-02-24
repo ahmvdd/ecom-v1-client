@@ -24,14 +24,8 @@ export default function Header() {
 
           <div className="flex items-center gap-8">
             <Link to="/" className="text-sm font-semibold tracking-[0.2em] uppercase">
-              Electra
+              Paris'Conect
             </Link>
-            <nav className="hidden md:flex gap-6">
-              <Link to="/produits?cat=nouveautes" className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Nouveautés</Link>
-              <Link to="/produits?cat=accessoires" className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Accessoires</Link>
-              <Link to="/produits?cat=audio"       className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Audio</Link>
-              <Link to="/produits?cat=electromenager" className="text-sm text-zinc-500 hover:text-zinc-900 transition-colors">Électroménager</Link>
-            </nav>
           </div>
 
           <div className="flex items-center gap-3">

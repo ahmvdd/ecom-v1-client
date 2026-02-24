@@ -159,7 +159,7 @@ export default function Products() {
                 Notre équipe répond sous 1h sur WhatsApp.
               </p>
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Bonjour%20Electra%2C%20j%27ai%20besoin%20d%27un%20conseil.`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Bonjour%20Paris'Conect%2C%20j%27ai%20besoin%20d%27un%20conseil.`}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"

@@ -11,10 +11,10 @@ export default function Footer() {
           {/* Marque */}
           <div className="md:col-span-1">
             <Link to="/" className="text-white text-sm font-semibold tracking-[0.2em] uppercase block mb-5">
-              Electra
+              Paris'Conect
             </Link>
             <p className="text-sm text-zinc-500 font-light leading-relaxed max-w-xs mb-6">
-              L'art de vivre technologique. Des produits soigneusement sélectionnés pour sublimer votre quotidien.
+              Votre spécialiste parisien en accessoires Apple premium. Livraison express partout en France.
             </p>
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}`}
@@ -74,7 +74,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-zinc-600 font-light">© 2025 Electra. Basé en Île-de-France.</p>
+          <p className="text-xs text-zinc-600 font-light">© 2025 Paris'Conect. Basé en Île-de-France.</p>
           <p className="text-xs text-zinc-600 font-light">Commande &amp; suivi via WhatsApp</p>
         </div>
 
