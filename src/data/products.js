@@ -12,6 +12,7 @@ import imgCable          from '../img/c34ecbb6b534005c42c06a470b66132a.jpg'
 import imgAirPodsMax     from '../img/c69c25bbffd2eebc5dc8fc19df14f004.jpg'
 import imgAirPodsPro     from '../img/ca26fb54a237e1ec5172407638f44955.jpg'
 import imgAppleLogo      from '../img/dbfe75990174020a7ebf8799999212d8.jpg'
+import imgCoqueCuir      from '../img/3204fa7be80a7c00b752f68b417be68e.jpg'
 
 // =============================================
 // CATALOGUE PRODUITS
@@ -27,7 +28,7 @@ export const products = [
     categoryLabel: 'Pour iPhone 15',
     description:
       "Confectionné en cuir pleine fleur de première qualité. Protection optimale avec une patine élégante qui se bonifie avec le temps. Compatible recharge sans fil.",
-    image: 'https://images.unsplash.com/photo-1605000977407-2771f2f8e908?q=80&w=2070&auto=format&fit=crop',
+    image: imgCoqueCuir,
     models: ['15 Pro', '15 Pro Max', '15', '15 Plus'],
     colors: [
       { name: 'Noir Minuit',    value: '#1C1C1E' },
