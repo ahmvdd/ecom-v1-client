@@ -27,7 +27,7 @@ export const products = [
     categoryLabel: 'Pour iPhone 15',
     description:
       "Confectionné en cuir pleine fleur de première qualité. Protection optimale avec une patine élégante qui se bonifie avec le temps. Compatible recharge sans fil.",
-    image: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?q=80&w=2127&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1605000977407-2771f2f8e908?q=80&w=2070&auto=format&fit=crop',
     models: ['15 Pro', '15 Pro Max', '15', '15 Plus'],
     colors: [
       { name: 'Noir Minuit',    value: '#1C1C1E' },
@@ -175,7 +175,7 @@ export const products = [
     categoryLabel: 'Pour iPhone 15',
     description:
       "Verre trempé 9H anti-rayures avec kit d'installation garanti sans bulle. Ultra-fin 0,2mm. Compatible Face ID et recharge sans fil. Lot de 2 inclus.",
-    image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?q=80&w=2124&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1598978465764-7db2b679c694?q=80&w=2070&auto=format&fit=crop',
     models: ['15 Pro', '15 Pro Max', '15', '15 Plus'],
     colors: [],
     specs: [
@@ -319,7 +319,7 @@ export const products = [
     categoryLabel: 'Pour iPhone 15',
     description:
       "Coque officielle en silicone doux au toucher avec aimants MagSafe intégrés. Bords surélevés pour protéger l'écran et l'objectif. Intérieur microfibre anti-rayures.",
-    image: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1624166361015-6cd04e7ea03f?q=80&w=2070&auto=format&fit=crop',
     models: ['15 Pro', '15 Pro Max', '15', '15 Plus'],
     colors: [
       { name: 'Minuit',        value: '#1C1C1E' },
@@ -356,7 +356,7 @@ export const products = [
     categoryLabel: 'Protection PC',
     description:
       "Housse en néoprène premium avec doublure polaire anti-rayures. Fermeture magnétique silencieuse. Compartiment accessoires intégré. Compatible MacBook Pro 13\" et 14\".",
-    image: 'https://images.unsplash.com/photo-1484788984921-03950022c9ef?q=80&w=2104&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1627766556564-5d89b3765c46?q=80&w=2070&auto=format&fit=crop',
     models: ['13"', '14"', '15"', '16"'],
     colors: [
       { name: 'Noir',       value: '#1C1C1E' },
@@ -392,7 +392,7 @@ export const products = [
     categoryLabel: 'Chargeur Secteur',
     description:
       "Adaptateur secteur compact certifié Apple 20W pour charge rapide iPhone. Technologie GaN pour une chauffe minimale. Prise EU. Compatible USB-C Power Delivery.",
-    image: 'https://images.unsplash.com/photo-1591370874773-6702e8f12fd8?q=80&w=1974&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1615086169217-83e1c06c9f4f?q=80&w=2070&auto=format&fit=crop',
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
@@ -428,7 +428,7 @@ export const products = [
     categoryLabel: 'Chargeur Sans Fil',
     description:
       "Chargeur à induction plat ultra-compact 15W compatible iPhone, Samsung et tous appareils Qi. Indicateur LED discret. Charge à travers les coques jusqu'à 5mm.",
-    image: 'https://images.unsplash.com/photo-1586816001966-79b736744398?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1575543419095-0b090628213f?q=80&w=2070&auto=format&fit=crop',
     models: [],
     colors: [
       { name: 'Noir',   value: '#1C1C1E' },
@@ -464,7 +464,7 @@ export const products = [
     categoryLabel: 'Support & Bureau',
     description:
       "Support réglable en aluminium brossé pour iPhone et iPad. Angle ajustable de 0° à 90°. Base lestée antidérapante. Idéal desk setup, cuisine, chambre.",
-    image: 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?q=80&w=2069&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1698314440014-3badb1e9c938?q=80&w=2070&auto=format&fit=crop',
     models: [],
     colors: [
       { name: 'Argent',      value: '#C0C0C0', border: true },
