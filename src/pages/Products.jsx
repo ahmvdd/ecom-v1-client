@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { products as allProducts, WHATSAPP_NUMBER } from '../data/products'
 import ProductCard from '../components/ProductCard'
 
-const CATEGORIES   = ['Tous', 'Accessoires', 'Audio', 'Électroménager']
+const CATEGORIES   = ['Tous', 'Smartphones', 'Audio', 'Accessoires', 'Électroménager']
 const PRICE_RANGES = [
   { id: 'all',     label: 'Tous les prix' },
   { id: '0-50',    label: 'Moins de 50 €' },
@@ -11,6 +11,7 @@ const PRICE_RANGES = [
   { id: '150+',    label: 'Plus de 150 €' },
 ]
 const CAT_MAP = {
+  smartphones:    'Smartphones',
   accessoires:    'Accessoires',
   audio:          'Audio',
   electromenager: 'Électroménager',
