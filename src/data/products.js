@@ -4,6 +4,14 @@
 export const WHATSAPP_NUMBER = '33782645675' // format international, sans + ni espaces
 
 // =============================================
+// IMPORTS IMAGES LOCALES
+// =============================================
+import imgAirPodsPro  from '../img/ca26fb54a237e1ec5172407638f44955.jpg'
+import imgAirPodsMax  from '../img/c69c25bbffd2eebc5dc8fc19df14f004.jpg'
+import imgChargeur    from '../img/dbfe75990174020a7ebf8799999212d8.jpg'
+import imgCoque       from '../img/3204fa7be80a7c00b752f68b417be68e.jpg'
+
+// =============================================
 // CATALOGUE PRODUITS
 // =============================================
 export const products = [
@@ -18,7 +26,7 @@ export const products = [
     categoryLabel: 'iPhone',
     description:
       "Le flagship ultime d'Apple. Puce A19 Pro, écran ProMotion 120Hz toujours actif, triple objectif pro avec zoom optique 5x. Disponible en plusieurs coloris. Livraison sous 7 à 14 jours.",
-    image: 'https://images.unsplash.com/photo-1678685888221-cebef6d7f9f4?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=2070&auto=format&fit=crop',
     models: ['256 Go', '512 Go', '1 To'],
     colors: [
       { name: 'Titane Noir',   value: '#3A3A3A' },
@@ -57,7 +65,7 @@ export const products = [
     categoryLabel: 'Écouteurs sans fil',
     description:
       "Les AirPods Pro première génération avec réduction de bruit active, mode Transparence et résistance à l'eau IPX4. Son spatial pour une immersion totale.",
-    image: 'https://images.unsplash.com/photo-1588423771073-b8903febb85d?q=80&w=2070&auto=format&fit=crop',
+    image: imgAirPodsPro,
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
@@ -90,7 +98,7 @@ export const products = [
     categoryLabel: 'Écouteurs sans fil',
     description:
       "AirPods Pro 2e génération avec puce H2, réduction de bruit adaptative, son spatial personnalisé et boîtier MagSafe. Jusqu'à 30h d'autonomie totale.",
-    image: 'https://images.unsplash.com/photo-1603351154351-5e2d0600bb77?q=80&w=2070&auto=format&fit=crop',
+    image: imgAirPodsPro,
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
@@ -123,7 +131,7 @@ export const products = [
     categoryLabel: 'Écouteurs sans fil',
     description:
       "Les AirPods 4, la dernière génération avec son spatial, puce H2 et design intra-auriculaire universel. Son exceptionnel sans embouts. Boîtier USB-C.",
-    image: 'https://images.unsplash.com/photo-1710063474951-7cfb88d9d8f4?q=80&w=2070&auto=format&fit=crop',
+    image: imgAirPodsMax,
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
@@ -158,7 +166,7 @@ export const products = [
     categoryLabel: 'Chargeur',
     description:
       "Chargeur USB-C compact compatible iPhone 15 et supérieur. Charge rapide 20W. Léger, universel, idéal pour la maison ou le voyage.",
-    image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?q=80&w=2070&auto=format&fit=crop',
+    image: imgChargeur,
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
@@ -330,7 +338,7 @@ export const products = [
     categoryLabel: 'Coque iPhone',
     description:
       "Coques iPhone disponibles en 7 modèles tendance. Protection renforcée 4 coins, bords surélevés pour l'écran et l'objectif. Compatible recharge sans fil. Disponible du 13 au 16 Pro Max.",
-    image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?q=80&w=2070&auto=format&fit=crop',
+    image: imgCoque,
     models: ['iPhone 13', 'iPhone 13 Pro', 'iPhone 14', 'iPhone 14 Pro', 'iPhone 15', 'iPhone 15 Pro', 'iPhone 16 Pro Max'],
     colors: [
       { name: 'Noir Minuit',  value: '#1C1C1E' },
