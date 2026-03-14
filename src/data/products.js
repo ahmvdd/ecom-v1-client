@@ -4,14 +4,6 @@
 export const WHATSAPP_NUMBER = '33782645675' // format international, sans + ni espaces
 
 // =============================================
-// IMPORTS IMAGES LOCALES
-// =============================================
-import imgAirPodsPro  from '../img/ca26fb54a237e1ec5172407638f44955.jpg'
-import imgAirPodsMax  from '../img/c69c25bbffd2eebc5dc8fc19df14f004.jpg'
-import imgChargeur    from '../img/dbfe75990174020a7ebf8799999212d8.jpg'
-import imgCoque       from '../img/3204fa7be80a7c00b752f68b417be68e.jpg'
-
-// =============================================
 // CATALOGUE PRODUITS
 // =============================================
 export const products = [
@@ -26,7 +18,7 @@ export const products = [
     categoryLabel: 'iPhone',
     description:
       "Le flagship ultime d'Apple. Puce A19 Pro, écran ProMotion 120Hz toujours actif, triple objectif pro avec zoom optique 5x. Disponible en plusieurs coloris. Livraison sous 7 à 14 jours.",
-    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.apple.com/newsroom/images/2025/09/apple-unveils-iphone-17-pro-and-iphone-17-pro-max/article/Apple-iPhone-17-Pro-color-lineup-250909_inline.jpg.large.jpg',
     models: ['256 Go', '512 Go', '1 To'],
     colors: [
       { name: 'Titane Noir',   value: '#3A3A3A' },
@@ -65,7 +57,7 @@ export const products = [
     categoryLabel: 'Écouteurs sans fil',
     description:
       "Les AirPods Pro première génération avec réduction de bruit active, mode Transparence et résistance à l'eau IPX4. Son spatial pour une immersion totale.",
-    image: imgAirPodsPro,
+    image: 'https://www.apple.com/newsroom/images/product/airpods/standard/Apple-AirPods-Pro-2nd-gen-hero-220907_big.jpg.large.jpg',
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
@@ -98,7 +90,7 @@ export const products = [
     categoryLabel: 'Écouteurs sans fil',
     description:
       "AirPods Pro 2e génération avec puce H2, réduction de bruit adaptative, son spatial personnalisé et boîtier MagSafe. Jusqu'à 30h d'autonomie totale.",
-    image: imgAirPodsPro,
+    image: 'https://www.apple.com/newsroom/images/product/airpods/standard/Apple-AirPods-Pro-2nd-gen-hero-220907_big.jpg.large.jpg',
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
@@ -131,7 +123,7 @@ export const products = [
     categoryLabel: 'Écouteurs sans fil',
     description:
       "Les AirPods 4, la dernière génération avec son spatial, puce H2 et design intra-auriculaire universel. Son exceptionnel sans embouts. Boîtier USB-C.",
-    image: imgAirPodsMax,
+    image: 'https://www.apple.com/newsroom/images/2024/09/apple-introduces-airpods-4/article/Apple-AirPods-4-with-case-240909_big.jpg.large.jpg',
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
@@ -166,7 +158,7 @@ export const products = [
     categoryLabel: 'Chargeur',
     description:
       "Chargeur USB-C compact compatible iPhone 15 et supérieur. Charge rapide 20W. Léger, universel, idéal pour la maison ou le voyage.",
-    image: imgChargeur,
+    image: 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MWVV3?wid=1000&hei=1000&fmt=jpeg&qlt=95&.v=1751998599188',
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
@@ -198,7 +190,7 @@ export const products = [
     categoryLabel: 'Chargeur',
     description:
       "Chargeur USB-C puissant 30W avec technologie GaN pour une chauffe minimale. Compatible iPhone, iPad Pro, MacBook Air et tous appareils USB-C.",
-    image: 'https://images.unsplash.com/photo-1615086169217-83e1c06c9f4f?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MWVV3?wid=1000&hei=1000&fmt=jpeg&qlt=95&.v=1751998599188',
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
@@ -232,7 +224,7 @@ export const products = [
     categoryLabel: 'Écouteurs filaires',
     description:
       "Écouteurs filaires USB-C compatibles iPhone 15 et Android. Son clair et équilibré, microphone intégré pour les appels. Embouts en silicone inclus. Plug & play.",
-    image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MTJY3_AV1?wid=2000&hei=2000&fmt=jpeg&qlt=90&.v=bmFwQVJYbndCZ011RUJYaXVWY1hVaVRkTXNZOFJZTitTVFE0NHl0VW5Cb0YwVmtIbGRkS25RMVpBRlo0bk5DUWhVNDNYVFRLQ0Z2ZFZON3I1WFAxcVE',
     models: [],
     colors: [
       { name: 'Blanc', value: '#F5F5F5', border: true },
@@ -266,7 +258,7 @@ export const products = [
     categoryLabel: 'Enceinte Bluetooth',
     description:
       "Enceinte Bluetooth JBL Pulse 5 avec éclairage LED 360° spectaculaire. Son puissant JBL Original Pro Sound, résistante à l'eau IP67, autonomie 12h.",
-    image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://shopallhub.com/cdn/shop/files/1_JBL_PULSE_5_HERO_34364_x2_973968eb-ba3d-4fba-813a-7f2103ab4973.png?v=1720050104',
     models: [],
     colors: [
       { name: 'Noir', value: '#1C1C1E' },
@@ -300,7 +292,7 @@ export const products = [
     categoryLabel: 'Enceinte Bluetooth',
     description:
       "Mini enceinte Bluetooth JBL Clip 6 ultra-portable avec mousqueton intégré. IP67, autonomie 12h, son riche et puissant pour sa taille.",
-    image: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://cdn.mos.cms.futurecdn.net/JJUn8mvsCJPFYHNgoPrCvU.jpg',
     models: [],
     colors: [
       { name: 'Noir',  value: '#1C1C1E' },
@@ -338,7 +330,7 @@ export const products = [
     categoryLabel: 'Coque iPhone',
     description:
       "Coques iPhone disponibles en 7 modèles tendance. Protection renforcée 4 coins, bords surélevés pour l'écran et l'objectif. Compatible recharge sans fil. Disponible du 13 au 16 Pro Max.",
-    image: imgCoque,
+    image: 'https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MGF14?wid=2000&hei=2000&fmt=jpeg&qlt=90&.v=MDZvalV4Qm4xTmFlYkZYdUhlVXpzV2orYzFkTG5HaE9wejd5WUxYZjRMK2VqbEpIZ1hib0hHcnQwY0VMaEZFTko0Vk45bnVXdG1yMVRhY1VsbDhVVGc',
     models: ['iPhone 13', 'iPhone 13 Pro', 'iPhone 14', 'iPhone 14 Pro', 'iPhone 15', 'iPhone 15 Pro', 'iPhone 16 Pro Max'],
     colors: [
       { name: 'Noir Minuit',  value: '#1C1C1E' },
@@ -380,7 +372,7 @@ export const products = [
     categoryLabel: 'Aspirateur sans fil',
     description:
       "Aspirateur sans fil Dyson V15 Detect avec détection laser des poussières invisibles. Puissance 240 AW, filtration HEPA, autonomie 60 min. Livraison sous 7 à 14 jours.",
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://i.rtings.com/assets/products/aeHKQN8y/dyson-v15-detect/in-test-medium.jpg',
     models: [],
     colors: [
       { name: 'Jaune/Nickel', value: '#D4AF37' },
@@ -415,7 +407,7 @@ export const products = [
     categoryLabel: 'Soin capillaire',
     description:
       "Sèche-cheveux Dyson Supersonic avec technologie de mesure de la température 40x/seconde pour protéger les cheveux. Moteur ultra-puissant V9. Séchage 3x plus rapide. Livraison 7 à 14 jours.",
-    image: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://e7.pngegg.com/pngimages/796/693/png-clipart-dyson-supersonic-hairdryer-hairdryers.png',
     models: [],
     colors: [
       { name: 'Noir/Nickel', value: '#1C1C1E' },
