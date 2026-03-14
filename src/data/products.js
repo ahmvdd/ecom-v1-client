@@ -407,7 +407,7 @@ export const products = [
     categoryLabel: 'Soin capillaire',
     description:
       "Sèche-cheveux Dyson Supersonic avec technologie de mesure de la température 40x/seconde pour protéger les cheveux. Moteur ultra-puissant V9. Séchage 3x plus rapide. Livraison 7 à 14 jours.",
-    image: 'https://e7.pngegg.com/pngimages/796/693/png-clipart-dyson-supersonic-hairdryer-hairdryers.png',
+    image: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?q=80&w=2070&auto=format&fit=crop',
     models: [],
     colors: [
       { name: 'Noir/Nickel', value: '#1C1C1E' },
